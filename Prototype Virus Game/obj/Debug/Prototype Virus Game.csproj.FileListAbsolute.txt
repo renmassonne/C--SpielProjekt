@@ -30,3 +30,14 @@ D:\Prototype Virus Game\Prototype Virus Game\obj\Debug\Prototype Virus Game.cspr
 D:\Prototype Virus Game\Prototype Virus Game\obj\Debug\Prototype Virus Game.csproj.CoreCompileInputs.cache
 D:\Prototype Virus Game\Prototype Virus Game\obj\Debug\Prototype Virus Game.exe
 D:\Prototype Virus Game\Prototype Virus Game\obj\Debug\Prototype Virus Game.pdb
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\bin\Debug\Prototype Virus Game.exe.config
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\bin\Debug\Prototype Virus Game.exe
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\bin\Debug\Prototype Virus Game.pdb
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype Virus Game.csprojAssemblyReference.cache
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype_Virus_Game.Form1.resources
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype_Virus_Game.GameMenu.resources
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype_Virus_Game.Properties.Resources.resources
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype Virus Game.csproj.GenerateResource.cache
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype Virus Game.csproj.CoreCompileInputs.cache
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype Virus Game.exe
+C:\Users\Hauck_J\Documents\GitHub\C--SpielProjekt\Prototype Virus Game\obj\Debug\Prototype Virus Game.pdb
