@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Prototype_Virus_Game
 {
@@ -34,9 +37,14 @@ namespace Prototype_Virus_Game
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
+            UiComponents.Components = new List<PictureBox>();
             this.pbPlatform = new System.Windows.Forms.PictureBox();
-            this.pbCharacter = new System.Windows.Forms.PictureBox();
+            UiComponents.Platform = this.pbPlatform;
+            this.pbCharacter = new Character();
+            UiComponents.Character = this.pbCharacter;
+
             this.pbBackGround = new System.Windows.Forms.PictureBox();
+            UiComponents.BackGround = this.pbBackGround;
             ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).BeginInit();
@@ -46,7 +54,7 @@ namespace Prototype_Virus_Game
             // 
             this.timer.Enabled = true;
             this.timer.Interval = 20;
-            this.timer.Tick += new System.EventHandler(this.Game_timer_Tick);
+            this.timer.Tick += new System.EventHandler(new CharacterLogic().Logic);
             // 
             // label1
             // 
@@ -71,25 +79,12 @@ namespace Prototype_Virus_Game
             this.pbPlatform.TabIndex = 4;
             this.pbPlatform.TabStop = false;
             this.pbPlatform.Tag = "platform";
-            // 
-            // pbCharacter
-            // 
-            this.pbCharacter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbCharacter.BackColor = System.Drawing.Color.White;
-            this.pbCharacter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCharacter.Image = global::Prototype_Virus_Game.Properties.Resources.richtiges_bild;
-            this.pbCharacter.Location = new System.Drawing.Point(157, 439);
-            this.pbCharacter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbCharacter.Name = "pbCharacter";
-            this.pbCharacter.Size = new System.Drawing.Size(103, 167);
-            this.pbCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbCharacter.TabIndex = 3;
-            this.pbCharacter.TabStop = false;
+
             // 
             // pbBackGround
             // 
-            this.pbBackGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pbBackGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBackGround.BackColor = System.Drawing.Color.White;
             this.pbBackGround.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -104,6 +99,21 @@ namespace Prototype_Virus_Game
             // 
             // Game
             // 
+            InitializeGameBoard();
+
+            this.Load += new System.EventHandler(this.Game_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(new KeyDownEventHandler().Game_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(new KeyUpEventHandler().Game_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        private void InitializeGameBoard()
+        {
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -118,24 +128,15 @@ namespace Prototype_Virus_Game
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Virüs Schmirüs";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
-            this.Load += new System.EventHandler(this.Game_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pbBackGround;
-        private System.Windows.Forms.PictureBox pbCharacter;
-        private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.PictureBox pbPlatform;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label label1;
+        private PictureBox pbBackGround;
+        private PictureBox pbCharacter;
+        private Timer timer;
+        private PictureBox pbPlatform;
+        private BackgroundWorker backgroundWorker1;
+        private Label label1;
     }
 }
 

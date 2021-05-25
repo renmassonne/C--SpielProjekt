@@ -12,17 +12,14 @@ namespace Prototype_Virus_Game
 {
     public partial class Game_Menu : Form
     {
-
-        
-
         public Game_Menu()
         {
             InitializeComponent();
 
-            if (Game.instance.Fullscreen == false)
+            if (GameState.Fullscreen == false)
                 btnVollbildToggle.Text = "Vollbild: Aus";
 
-            else if (Game.instance.Fullscreen == true)
+            else if (GameState.Fullscreen == true)
                 btnVollbildToggle.Text = "Vollbild: An";
         }
 
