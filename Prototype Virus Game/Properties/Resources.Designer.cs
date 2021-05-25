@@ -61,13 +61,12 @@ namespace Prototype_Virus_Game.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap kisscc0_computer_icons_video_games_mario_series_platform_g_ilmenskie_flying_platform_4_5b728ee6203db5_8750860715342343421321 {
+        internal static byte[] ghostclanital {
             get {
-                object obj = ResourceManager.GetObject("kisscc0-computer-icons-video-games-mario-series-platform-g-ilmenskie-flying-platf" +
-                        "orm-4-5b728ee6203db5.8750860715342343421321", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("ghostclanital", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -77,6 +76,36 @@ namespace Prototype_Virus_Game.Properties {
         internal static System.Drawing.Bitmap Level_1 {
             get {
                 object obj = ResourceManager.GetObject("Level-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap platform {
+            get {
+                object obj = ResourceManager.GetObject("platform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap richtiges_bild {
+            get {
+                object obj = ResourceManager.GetObject("richtiges bild", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stones_game_Thumbnail {
+            get {
+                object obj = ResourceManager.GetObject("Stones-game-Thumbnail", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
