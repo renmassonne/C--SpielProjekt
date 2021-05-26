@@ -50,5 +50,18 @@ namespace Prototype_Virus_Game
                 Components.Add(value);
             }
         }
+        private static PictureBox virus;
+        public static PictureBox Virus 
+           {
+            get
+            {
+                return virus;
+            }
+            internal set
+            {
+                virus = value;
+                Components.Add(value);
+            }
+        }
     }
 }
