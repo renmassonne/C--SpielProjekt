@@ -73,6 +73,16 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hilde {
+            get {
+                object obj = ResourceManager.GetObject("Hilde", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Level_1 {
             get {
                 object obj = ResourceManager.GetObject("Level-1", resourceCulture);

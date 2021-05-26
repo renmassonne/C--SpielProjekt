@@ -56,22 +56,17 @@ namespace Prototype_Virus_Game
                 }
             }
 
-            foreach (PictureBox uiComponent in UiComponents.Components)
+
+            if (UiComponents.Character.Bounds.IntersectsWith(UiComponents.Platform.Bounds))
             {
-                if (uiComponent == UiComponents.Platform)
+                if (UiComponents.Character.Bottom > UiComponents.Platform.Top - 10 && UiComponents.Character.Bottom < UiComponents.Platform.Top + 10)
                 {
-                    if (UiComponents.Character.Bounds.IntersectsWith(uiComponent.Bounds))
-                    {
-                        if (UiComponents.Character.Bottom > UiComponents.Platform.Top - 10 && UiComponents.Character.Bottom < UiComponents.Platform.Top + 10)
-                        {
-                            GameState.OnPlatform = true;
-                        }
-                    }
-                    else
-                    {
-                        GameState.OnPlatform = false;
-                    }
+                    GameState.OnPlatform = true;
                 }
+            }
+            else
+            {
+                GameState.OnPlatform = false;
             }
         }
     }

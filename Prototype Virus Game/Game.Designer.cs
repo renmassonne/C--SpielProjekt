@@ -42,12 +42,15 @@ namespace Prototype_Virus_Game
             UiComponents.Platform = this.pbPlatform;
             this.pbCharacter = new Character();
             UiComponents.Character = this.pbCharacter;
+            this.pbVirus = new Virus();
+            UiComponents.Virus = this.pbVirus;
 
             this.pbBackGround = new System.Windows.Forms.PictureBox();
             UiComponents.BackGround = this.pbBackGround;
             ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVirus)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -107,6 +110,7 @@ namespace Prototype_Virus_Game
             ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVirus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,6 +127,7 @@ namespace Prototype_Virus_Game
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbPlatform);
             this.Controls.Add(this.pbBackGround);
+            this.Controls.Add(this.pbVirus);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -133,6 +138,7 @@ namespace Prototype_Virus_Game
         #endregion
         private PictureBox pbBackGround;
         private PictureBox pbCharacter;
+        private PictureBox pbVirus;
         private Timer timer;
         private PictureBox pbPlatform;
         private BackgroundWorker backgroundWorker1;
