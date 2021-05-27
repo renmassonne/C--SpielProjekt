@@ -5,8 +5,6 @@ namespace Prototype_Virus_Game
 {
     public class VirusLogic
     {
-        private Random randomizer = new Random();
-
         public void Logic(object sender, EventArgs e)
         {
             ZuOrtBewegen(UiComponents.Character.Location);
@@ -28,7 +26,7 @@ namespace Prototype_Virus_Game
 
         private void ZuOrtBewegen(Point ziel)
         {
-            int Schrittweite = randomizer.Next(0, 3);
+            int Schrittweite = 1;
 
             if (ziel.X > UiComponents.Virus.Location.X)
                 UiComponents.Virus.Location = new Point(UiComponents.Virus.Location.X + Schrittweite, UiComponents.Virus.Location.Y);
