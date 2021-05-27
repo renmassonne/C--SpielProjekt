@@ -35,6 +35,7 @@ namespace Prototype_Virus_Game
         {
             this.components = new System.ComponentModel.Container();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.timervirus = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             UiComponents.Components = new List<PictureBox>();
@@ -58,6 +59,12 @@ namespace Prototype_Virus_Game
             this.timer.Enabled = true;
             this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(new CharacterLogic().Logic);
+            //
+            // timervirus
+            //
+            this.timervirus.Enabled = true;
+            this.timervirus.Interval = 30;
+            this.timervirus.Tick += new System.EventHandler(new VirusLogic().Logic);
             // 
             // label1
             // 
@@ -140,6 +147,7 @@ namespace Prototype_Virus_Game
         private PictureBox pbCharacter;
         private PictureBox pbVirus;
         private Timer timer;
+        private Timer timervirus;
         private PictureBox pbPlatform;
         private BackgroundWorker backgroundWorker1;
         private Label label1;
