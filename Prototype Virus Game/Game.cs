@@ -37,8 +37,12 @@ namespace Prototype_Virus_Game
             pbPlatform.BackColor = Color.Transparent;
             pbPlatform.Location = new Point(350, 450);
 
-            pbVirus.BackColor = Color.Transparent;
-            pbVirus.Parent = pbBackGround;
+            foreach(var virus in UiComponents.Viruses)
+            {
+                virus.BackColor = Color.Transparent;
+                virus.Parent = pbBackGround;
+            }
+            
         }
 
         private void StartLevel()

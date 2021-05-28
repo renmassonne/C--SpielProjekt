@@ -33,26 +33,36 @@ namespace Prototype_Virus_Game
         /// </summary>
         private void InitializeComponent()
         {
+            GameState.GameBoardHeight = 673;
+            GameState.GameBoardWidth = 1262;
             this.components = new System.ComponentModel.Container();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.timervirus = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             UiComponents.Components = new List<PictureBox>();
+            UiComponents.Viruses = new List<Virus>();
             this.pbPlatform = new System.Windows.Forms.PictureBox();
             UiComponents.Platform = this.pbPlatform;
             this.pbCharacter = new Character();
             UiComponents.Character = this.pbCharacter;
-            this.pbVirus = new Virus();
-            UiComponents.Virus = this.pbVirus;
+            
 
             this.pbBackGround = new System.Windows.Forms.PictureBox();
             UiComponents.BackGround = this.pbBackGround;
             ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVirus)).BeginInit();
             this.SuspendLayout();
+
+            for (int i =0; i<10;i++)
+            {
+                var virus = new Virus();
+                UiComponents.AddVirus(virus);
+                ((System.ComponentModel.ISupportInitialize)(virus)).BeginInit();
+                this.Controls.Add(virus);
+                ((System.ComponentModel.ISupportInitialize)(virus)).EndInit();
+            }
             // 
             // timer
             // 
@@ -102,7 +112,7 @@ namespace Prototype_Virus_Game
             this.pbBackGround.Location = new System.Drawing.Point(0, 0);
             this.pbBackGround.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbBackGround.Name = "pbBackGround";
-            this.pbBackGround.Size = new System.Drawing.Size(1262, 673);
+            this.pbBackGround.Size = new System.Drawing.Size(GameState.GameBoardWidth, GameState.GameBoardHeight);
             this.pbBackGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBackGround.TabIndex = 2;
             this.pbBackGround.TabStop = false;
@@ -117,7 +127,6 @@ namespace Prototype_Virus_Game
             ((System.ComponentModel.ISupportInitialize)(this.pbPlatform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVirus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,12 +138,11 @@ namespace Prototype_Virus_Game
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.ClientSize = new System.Drawing.Size(GameState.GameBoardWidth, GameState.GameBoardHeight);
             this.Controls.Add(this.pbCharacter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbPlatform);
             this.Controls.Add(this.pbBackGround);
-            this.Controls.Add(this.pbVirus);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -145,7 +153,6 @@ namespace Prototype_Virus_Game
         #endregion
         private PictureBox pbBackGround;
         private PictureBox pbCharacter;
-        private PictureBox pbVirus;
         private Timer timer;
         private Timer timervirus;
         private PictureBox pbPlatform;

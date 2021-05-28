@@ -1,41 +1,58 @@
 ﻿using System;
 using System.Drawing;
 
+
 namespace Prototype_Virus_Game
 {
     public class VirusLogic
     {
+        Random randomizer = new Random();
+
         public void Logic(object sender, EventArgs e)
         {
-            ZuOrtBewegen(UiComponents.Character.Location);
+            foreach (var virus in UiComponents.Viruses)
+            {
+                MoveVirusToTargetPosition(virus);
+                if(virus.IsTargetPositionReached())
+                {
+                    virus.RecalculateTargetPosition();
+                }
+            }
         }
 
-        //private bool IntersectsWithNonPlayerUiComponent()
-        //{
-        //    foreach(var uiCompontent in UiComponents.Components)
-        //    {
-        //        if (UiComponents.Virus.Bounds.IntersectsWith(uiCompontent.Bounds) 
-        //            && uiCompontent != UiComponents.Virus
-        //            && uiCompontent != UiComponents.BackGround)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        private void ZuOrtBewegen(Point ziel)
+        private void MoveVirusToTargetPosition(Virus virus)
         {
             int Schrittweite = 1;
+            var orignalLocation = new Point(virus.Location.X, virus.Location.Y);
 
-            if (ziel.X > UiComponents.Virus.Location.X)
-                UiComponents.Virus.Location = new Point(UiComponents.Virus.Location.X + Schrittweite, UiComponents.Virus.Location.Y);
-            else if (ziel.X < UiComponents.Virus.Location.X)
-                UiComponents.Virus.Location = new Point(UiComponents.Virus.Location.X - Schrittweite, UiComponents.Virus.Location.Y);
-            if (ziel.Y > UiComponents.Virus.Location.Y)
-                UiComponents.Virus.Location = new Point(UiComponents.Virus.Location.X, UiComponents.Virus.Location.Y + Schrittweite);
-            else if (ziel.Y < UiComponents.Virus.Location.Y)
-                UiComponents.Virus.Location = new Point(UiComponents.Virus.Location.X, UiComponents.Virus.Location.Y - Schrittweite);
+            if (virus.TargetPosition.X > virus.Location.X)
+                virus.Location = new Point(virus.Location.X + Schrittweite, virus.Location.Y);
+            else if (virus.TargetPosition.X < virus.Location.X)
+                virus.Location = new Point(virus.Location.X - Schrittweite, virus.Location.Y);
+            if (virus.TargetPosition.Y > virus.Location.Y)
+                virus.Location = new Point(virus.Location.X, virus.Location.Y + Schrittweite);
+            else if (virus.TargetPosition.Y < virus.Location.Y)
+                virus.Location = new Point(virus.Location.X, virus.Location.Y - Schrittweite);
+
+            if(IntersectsWithNonPlayerUiComponent(virus))
+            {
+                virus.Location = orignalLocation;
+                virus.RecalculateTargetPosition();
+            }
+        }
+
+        private bool IntersectsWithNonPlayerUiComponent(Virus virus)
+        {
+            foreach (var uiCompontent in UiComponents.Viruses)
+            {
+                if (virus.Bounds.IntersectsWith(uiCompontent.Bounds)
+                    && uiCompontent != UiComponents.BackGround
+                    && uiCompontent != virus)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

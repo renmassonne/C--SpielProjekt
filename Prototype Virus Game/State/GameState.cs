@@ -8,6 +8,8 @@ namespace Prototype_Virus_Game
 {
     public static class GameState
     {
+        public static int GameBoardWidth { get; set; }
+        public static int GameBoardHeight { get; set; }
         public static bool Jump { get; set; }
         public static bool RunRight { get; set; }
         public static bool RunLeft { get; set; }
