@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Prototype_Virus_Game
 {
@@ -18,7 +19,12 @@ namespace Prototype_Virus_Game
         public static bool PlayerLookingRight { get; set; }
         public static bool OnPlatform { get; set; }
         public static bool Fullscreen { get; set; }
+        public static bool KeyPressA { get; set; }
+        public static bool KeyPressD { get; set; }
+
         public static int GroundLevel { get; set; }
+
+       
 
         static GameState()
         {
