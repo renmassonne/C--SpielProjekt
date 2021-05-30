@@ -17,6 +17,7 @@ namespace Prototype_Virus_Game
             SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             TabIndex = 3;
             TabStop = false;
+            
         }
     }
 }
