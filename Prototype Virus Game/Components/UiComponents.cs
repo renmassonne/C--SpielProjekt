@@ -11,6 +11,8 @@ namespace Prototype_Virus_Game
     {
         public static List<PictureBox> Components { get; internal set; }
 
+        
+
         public static List<Virus> Viruses{ get; internal set; }
 
         private static PictureBox character;
@@ -35,7 +37,8 @@ namespace Prototype_Virus_Game
             internal set
             {
                 platform = value; 
-                Components.Add(value); 
+                Components.Add(value);
+                
             }
         }
 
