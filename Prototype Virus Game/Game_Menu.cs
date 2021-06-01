@@ -43,5 +43,11 @@ namespace Prototype_Virus_Game
         {
 
         }
+
+        private void btnAnleitung_Click(object sender, EventArgs e)
+        {
+            Anleitung gm = new Anleitung();
+            gm.Show();
+        }
     }
 }
