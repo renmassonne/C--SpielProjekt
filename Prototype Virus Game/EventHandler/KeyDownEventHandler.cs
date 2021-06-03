@@ -13,51 +13,45 @@ namespace Prototype_Virus_Game
         {
             if (e.KeyCode == Keys.A)
             {
+
                 GameState.RunLeft = true;
-                GameState.KeyPressA = true;
+
 
                 if (GameState.PlayerLookingRight == true)
                 {
-                    if (GameState.KeyPressD)
-                    {
-                        GameState.TurnPlayer = false;
-                    }
-                    else
-                    {
-                       GameState.TurnPlayer = true;
-                    }
+
+
+                    GameState.TurnPlayer = true;
+
                 }
-               
+
             }
 
             if (e.KeyCode == Keys.D)
             {
+
                 GameState.RunRight = true;
-                GameState.KeyPressD = true;
+
 
                 if (GameState.PlayerLookingLeft == true)
                 {
-                    if (GameState.KeyPressA)
-                    {
-                        GameState.TurnPlayer = false;
-                    }
-                    else
-                    {
-                        GameState.TurnPlayer = true;
-                    }
+                    GameState.TurnPlayer = true;
                 }
-               
-            }
 
-          
-            if (e.KeyCode == Keys.Space)
-            {
+            }
+           
+
+                if (e.KeyCode == Keys.Space)
+            {               
+               
                 GameState.Jump = true;
+                
             }
             if (e.KeyCode == Keys.Escape)
             {
                 Game_Menu gm = new Game_Menu();
                 gm.Show();
+                
             }
 
         }

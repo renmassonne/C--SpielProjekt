@@ -7,28 +7,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Prototype_Virus_Game
 {
     public class CharacterLogic
     {
-        int x =100;
-        int y=495;
+        public int x;
+        public int y;
+
+      
+
         public void Logic(object sender, EventArgs e)
         {
+            x = Game.instance.pbCharacterBounds.Location.X;
+            y = Game.instance.pbCharacterBounds.Location.Y;
+
             if (GameState.Jump)
             {
-                if (!(Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel) || GameState.OnPlatform)
+                
                 {
-                    Graphics gb = Graphics.FromImage(Game.instance.anzeige);  
-                gb.DrawImage(Game.instance.hinterbmp1, 0, 0, Game.instance.hinterbmp1.Width, Game.instance.hinterbmp1.Height); 
-                gb.DrawImage(Game.instance.platform, Game.instance.x, Game.instance.y, 326, 95);
-                gb.DrawImage(Game.instance.platform, 550, 350, 326, 95);  
-                gb.DrawImage(Game.instance.character, x, y-160, 103, 167);
-                gb.Dispose();                       
-                Game.instance.pbBackGround.Image = Game.instance.anzeige;
+                    if (!(Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel) || GameState.OnPlatform)
+                    {
+                    Game.instance.DrawGameAssets(x, y - 200);
+                    
+                    Game.instance.pbCharacterBounds.Top -= 200;
 
-                Game.instance.pbCharacterBounds.Top -= 160;
-                y -= 160;
+                        
+                        GameState.Jump = false;
+
+
+                    }
 
                 }
 
@@ -38,16 +46,10 @@ namespace Prototype_Virus_Game
             {
                 if (Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel)
                 {
-                    Graphics gb = Graphics.FromImage(Game.instance.anzeige);
-                    gb.DrawImage(Game.instance.hinterbmp1, 0, 0, Game.instance.hinterbmp1.Width, Game.instance.hinterbmp1.Height);
-                    gb.DrawImage(Game.instance.platform, Game.instance.x, Game.instance.y, 326, 95);
-                    gb.DrawImage(Game.instance.platform, 550, 350, 326, 95);
-                    gb.DrawImage(Game.instance.character, x, y + 10, 103, 167);
-                    gb.Dispose();
-                    Game.instance.pbBackGround.Image = Game.instance.anzeige;
+                    Game.instance.DrawGameAssets(x, y + 10);
 
                     Game.instance.pbCharacterBounds.Top += 10;
-                    y += 10;
+
 
                 }
             }
@@ -59,42 +61,30 @@ namespace Prototype_Virus_Game
             {
                 if (Game.instance.pbCharacterBounds.Location.X < UiComponents.BackGround.ClientSize.Width - 105)
                 {
-                   
 
-                    Graphics gb = Graphics.FromImage(Game.instance.anzeige);  
-                    gb.DrawImage(Game.instance.hinterbmp1, 0, 0, Game.instance.hinterbmp1.Width, Game.instance.hinterbmp1.Height); 
-                    gb.DrawImage(Game.instance.platform, Game.instance.x, Game.instance.y, 326, 95);
-                    gb.DrawImage(Game.instance.platform, 550, 350, 326, 95);
-                    gb.DrawImage(Game.instance.character, x+13,y, 103, 167);
-                    gb.Dispose(); 
-                    Game.instance.pbBackGround.Image = Game.instance.anzeige;
-                    
+
+                    Game.instance.DrawGameAssets(x+13, y);
+
 
                     Game.instance.pbCharacterBounds.Left += 13;
-                    x += 13;
+
 
                 }
             }
 
             if (GameState.RunLeft)
             {
-                if (Game.instance.pbCharacterBounds.Location.X  > 0)
+                if (Game.instance.pbCharacterBounds.Location.X > 9)
                 {
 
-                Graphics gb = Graphics.FromImage(Game.instance.anzeige);  
-                gb.DrawImage(Game.instance.hinterbmp1, 0, 0, Game.instance.hinterbmp1.Width, Game.instance.hinterbmp1.Height); 
-                gb.DrawImage(Game.instance.platform, Game.instance.x, Game.instance.y, 326, 95);
-                gb.DrawImage(Game.instance.platform, 550, 350, 326, 95);
-                gb.DrawImage(Game.instance.character, x - 13, y, 103, 167);
-                gb.Dispose();                            
-                Game.instance.pbBackGround.Image = Game.instance.anzeige;
+                    Game.instance.DrawGameAssets(x - 13, y);
 
-                Game.instance.pbCharacterBounds.Left -= 13;
-                x -= 13;
+                    Game.instance.pbCharacterBounds.Left -= 13;
+
                 }
-                    
 
-               
+
+
 
             }
 
@@ -105,6 +95,7 @@ namespace Prototype_Virus_Game
                     Game.instance.character = Game.instance.characterLeft;
                     GameState.PlayerLookingRight = false;
                     GameState.PlayerLookingLeft = true;
+
                 }
                 else if (GameState.RunRight && GameState.PlayerLookingLeft)
                 {
@@ -112,53 +103,41 @@ namespace Prototype_Virus_Game
                     GameState.PlayerLookingLeft = false;
                     GameState.PlayerLookingRight = true;
                 }
+                GameState.TurnPlayer = false;
             }
 
-
-            if (Game.instance.pbCharacterBounds.Bounds.IntersectsWith(Game.instance.pbPlatform1.Bounds))
+            foreach (var platform in Game.instance.GamePlatforms)
             {
-                int playerFeet = Game.instance.pbCharacterBounds.Location.Y + Game.instance.pbCharacterBounds.Height;
-
-                if (playerFeet > Game.instance.pbPlatform1.Bounds.Top - 5 && playerFeet < Game.instance.pbPlatform1.Bounds.Top + 5)
+                if (Game.instance.pbCharacterBounds.Bounds.IntersectsWith(platform))
                 {
-                    Graphics gb = Graphics.FromImage(Game.instance.anzeige);
-                    gb.DrawImage(Game.instance.hinterbmp1, 0, 0, Game.instance.hinterbmp1.Width, Game.instance.hinterbmp1.Height);
-                    gb.DrawImage(Game.instance.platform, Game.instance.x, Game.instance.y, 326, 95);
-                    gb.DrawImage(Game.instance.platform, 550, 350, 326, 95);
-                    gb.DrawImage(Game.instance.character, Game.instance.pbCharacterBounds.Location.X, Game.instance.pbPlatform1.Top- 163, 103, 167);
-                    gb.Dispose();
-                    Game.instance.pbBackGround.Image = Game.instance.anzeige;
+                    int playerFeet = y + Game.instance.chaHeight;
 
-                    GameState.OnPlatform = true;
+                    if (playerFeet > platform.Top - 5 && playerFeet < platform.Top + 5)
+                    {
+                        Game.instance.DrawGameAssets(x, platform.Top - Game.instance.chaHeight);
+                        
+
+                        Game.instance.pbCharacterBounds.Location = new Point(x, platform.Top - Game.instance.chaHeight);
+                        y = platform.Top - Game.instance.chaHeight;
+
+                        GameState.OnPlatform = true;
+                    }                     
+                }               
+            }
+            int all = 0;
+
+            foreach (var platform in Game.instance.GamePlatforms)
+            {
+               
+                if (x + Game.instance.chaWidth <= platform.Left || x >= platform.Right || y + Game.instance.chaHeight < platform.Top || y + Game.instance.chaHeight > platform.Top)
+                {
+                    all += 1;
                 }
             }
-            else
-            {
+            if (all == Game.instance.GamePlatforms.Count)
                 GameState.OnPlatform = false;
-            }
-
-            //if (Game.instance.pbCharacterBounds.Bounds.IntersectsWith(Game.instance.pbPlatform2.Bounds))
-            //{
-            //    int playerFeet = Game.instance.pbCharacterBounds.Location.Y + Game.instance.pbCharacterBounds.Height;
-
-            //    if (playerFeet > Game.instance.pbPlatform2.Bounds.Top - 5 && playerFeet < Game.instance.pbPlatform2.Bounds.Top + 5)
-            //    {
-            //        Graphics gb = Graphics.FromImage(Game.instance.anzeige);
-            //        gb.DrawImage(Game.instance.hinterbmp1, 0, 0, Game.instance.hinterbmp1.Width, Game.instance.hinterbmp1.Height);
-            //        gb.DrawImage(Game.instance.platform, Game.instance.x, Game.instance.y, 326, 95);
-            //        gb.DrawImage(Game.instance.platform, 550, 350, 326, 95);
-            //        gb.DrawImage(Game.instance.character, Game.instance.pbCharacterBounds.Location.X, Game.instance.pbPlatform2.Top - 163, 103, 167);
-            //        gb.Dispose();
-            //        Game.instance.pbBackGround.Image = Game.instance.anzeige;
-
-            //        GameState.OnPlatform = true;
-            //    }
-            //}
-            //else
-            //{
-            //    GameState.OnPlatform = false;
-            //}
-
         }
+        
     }
 }
+

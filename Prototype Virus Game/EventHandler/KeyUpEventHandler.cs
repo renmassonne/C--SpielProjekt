@@ -17,13 +17,15 @@ namespace Prototype_Virus_Game
             }
             if (e.KeyCode == Keys.D)
             {
+
                 GameState.RunRight = false;
-                GameState.KeyPressD = false;
+
             }
             if (e.KeyCode == Keys.A)
             {
+
                 GameState.RunLeft = false;
-                GameState.KeyPressA = false;
+
             }
         }
     }

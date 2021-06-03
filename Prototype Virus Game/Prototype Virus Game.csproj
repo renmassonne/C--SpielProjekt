@@ -69,6 +69,7 @@
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
     <Compile Include="GameLogic\VirusLogic.cs" />
+    <Compile Include="GameLogic\Bullet.cs" />
     <Compile Include="Game_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hilde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueDot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

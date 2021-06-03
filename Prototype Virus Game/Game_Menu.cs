@@ -16,11 +16,11 @@ namespace Prototype_Virus_Game
         {
             InitializeComponent();
 
-            if (GameState.Fullscreen == false)
-                btnVollbildToggle.Text = "Vollbild: Aus";
+            //if (GameState.Fullscreen == false)
+            //    btnVollbildToggle.Text = "Vollbild: Aus";
 
-            else if (GameState.Fullscreen == true)
-                btnVollbildToggle.Text = "Vollbild: An";
+            //else if (GameState.Fullscreen == true)
+            //    btnVollbildToggle.Text = "Vollbild: An";
         }
 
         private void btnWeiter_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace Prototype_Virus_Game
 
         private void btnVollbildToggle_Click(object sender, EventArgs e)
         {
-            Game.instance.ChangeResolution();
+            //Game.instance.ChangeResolution();
             Close();
         }
 

@@ -18,13 +18,10 @@ namespace Prototype_Virus_Game
         public static bool PlayerLookingLeft { get; set; }
         public static bool PlayerLookingRight { get; set; }
         public static bool OnPlatform { get; set; }
-        public static bool Fullscreen { get; set; }
-        public static bool KeyPressA { get; set; }
-        public static bool KeyPressD { get; set; }
-
+        public static bool Fullscreen { get; set; }       
         public static int GroundLevel { get; set; }
+        public static bool Shoot { get; set; }
 
-       
 
         static GameState()
         {
