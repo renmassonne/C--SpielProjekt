@@ -60,6 +60,11 @@ namespace Prototype_Virus_Game
             Viruses.Add(virus);
             Components.Add(virus);
        }
-        
+        public static void RemoveVirus(Virus virus)
+        {
+            Viruses.Remove(virus);
+            Components.Remove(virus);
+        }
+
     }
 }
