@@ -117,4 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Erziele 100 Punkte durch das besiegen von Viren.
+Je stärker die Viren, desto mehr Punkte bekommst du.
+             (Bild von Virus Level 1) = 1 Punkt
+             (Bild von Virus Level 2) = 2 Punkte
+</value>
+  </data>
 </root>
