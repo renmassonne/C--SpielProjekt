@@ -29,6 +29,7 @@ namespace Prototype_Virus_Game
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anleitung));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,9 +43,9 @@ namespace Prototype_Virus_Game
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.DarkOrchid;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 24F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(249, 15);
+            this.label1.Location = new System.Drawing.Point(221, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 85);
+            this.label1.Size = new System.Drawing.Size(222, 71);
             this.label1.TabIndex = 0;
             this.label1.Text = "Anleitung";
             // 
@@ -53,22 +54,20 @@ namespace Prototype_Virus_Game
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.DarkOrchid;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(40, 185);
+            this.label2.Location = new System.Drawing.Point(64, 160);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(688, 172);
+            this.label2.Size = new System.Drawing.Size(566, 140);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Erziele 100 Punkte durch das besiegen von Viren.\r\nJe stärker die Viren, desto meh" +
-    "r Punkte bekommst du.\r\n(Bild von Virus Level 1) = 1 Punkt\r\n(Bild von Virus Level" +
-    " 2) = 2 Punkte\r\n";
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.DarkOrchid;
             this.label3.Font = new System.Drawing.Font("Segoe Print", 16F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(253, 128);
+            this.label3.Location = new System.Drawing.Point(225, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(262, 57);
+            this.label3.Size = new System.Drawing.Size(219, 47);
             this.label3.TabIndex = 2;
             this.label3.Text = "Ziel des Spiels:";
             // 
@@ -77,9 +76,9 @@ namespace Prototype_Virus_Game
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.DarkOrchid;
             this.label5.Font = new System.Drawing.Font("Segoe Print", 16F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(286, 392);
+            this.label5.Location = new System.Drawing.Point(254, 315);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(196, 57);
+            this.label5.Size = new System.Drawing.Size(165, 47);
             this.label5.TabIndex = 4;
             this.label5.Text = "Steuerung:";
             // 
@@ -88,21 +87,22 @@ namespace Prototype_Virus_Game
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.DarkOrchid;
             this.label6.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(221, 449);
+            this.label6.Location = new System.Drawing.Point(158, 375);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(326, 215);
+            this.label6.Size = new System.Drawing.Size(365, 140);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Nach Rechts laufen: D\r\nNach Links laufen: A\r\nSpringen: Leertaste\r\nZielen: Mauszei" +
-    "ger\r\nSchießen: linke Maustaste";
+            this.label6.Text = "Nach Rechts laufen:         D\r\nNach Links laufen:          A\r\nSpringen:          " +
+    "       Leertaste\r\nSchießen:             linke Maustaste";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DarkOrchid;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe Print", 16F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(257, 711);
+            this.button1.Location = new System.Drawing.Point(217, 557);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(254, 88);
+            this.button1.Size = new System.Drawing.Size(226, 70);
             this.button1.TabIndex = 6;
             this.button1.Text = "Zurück";
             this.button1.UseVisualStyleBackColor = false;
@@ -110,10 +110,10 @@ namespace Prototype_Virus_Game
             // 
             // Anleitung
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
-            this.ClientSize = new System.Drawing.Size(768, 843);
+            this.ClientSize = new System.Drawing.Size(683, 674);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -121,6 +121,7 @@ namespace Prototype_Virus_Game
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Anleitung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anleitung";
