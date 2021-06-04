@@ -136,10 +136,16 @@
   <data name="Level-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Level-1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BlueDot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlueDot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Stones-game-Thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stones-game-Thumbnail.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BlueDot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BlueDot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="characterLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\characterLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="characterRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\characterRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
