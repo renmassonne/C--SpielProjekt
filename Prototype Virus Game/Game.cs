@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -21,126 +23,128 @@ namespace Prototype_Virus_Game
         public static Game instance;
 
         private Bitmap hinterbmp;
-        private  Bitmap hinterbmp1;
-        private  Bitmap anzeige;
+        private Bitmap hinterbmp1;
+        private Bitmap anzeige;
         private Bitmap platform;
 
         public  Bitmap characterRight;
-        public Bitmap characterLeft;
+        public  Bitmap characterLeft;
         public  Bitmap character;
-        public Bitmap bullet;
-       
-   
+        
+         
         public int chaHeight;
         public int chaWidth;
 
         Size gameSize = new Size(1920, 1080);
 
-        public RectangleF backgroundRec = new RectangleF(0, 0, 1920, 1080);
-        public RectangleF platform1Rec = new RectangleF(350, 800, 326, 95);
-        public RectangleF platform2Rec = new RectangleF(100, 900, 326, 95);
-        public RectangleF platform3Rec = new RectangleF(400,550, 326, 95);
-        public RectangleF platform4Rec = new RectangleF(1200, 700, 326, 95);
+        public Rectangle backgroundRec = new Rectangle(0, 0, 1920, 1080);
+
+        public Rectangle platform1Rec = new Rectangle(50, 400, 326, 95);
+        public Rectangle platform2Rec = new Rectangle(200, 800, 326, 95);
+        public Rectangle platform3Rec = new Rectangle(350, 650, 326, 95);
+        public Rectangle platform4Rec = new Rectangle(500, 370 , 326, 95);
+        public Rectangle platform5Rec = new Rectangle(750, 220, 326, 95);
+        public Rectangle platform6Rec = new Rectangle(1300, 200, 326, 95);
+        public Rectangle platform7Rec = new Rectangle(1250, 500, 326, 95);
+        public Rectangle platform8Rec = new Rectangle(1500, 700, 326, 95);
+        public Rectangle platform9Rec = new Rectangle(750, 600, 326, 95);
+        public Rectangle platform10Rec = new Rectangle(250, 200, 326, 95);
 
 
-        public List<Rectangle> GamePlatforms;
-
-        
+        public List<Rectangle> GamePlatformsBounds;
 
 
-
+     
 
         public Game()
         {
             InitializeComponent();
+
+#region Allgemeines  
+            
             instance = this;
-            StartLevel();
+
+            ClientSize = new Size(gameSize.Width, gameSize.Height);            
+            GameState.GroundLevel = 820;
+            FormBorderStyle = FormBorderStyle.None;
+            
+            chaHeight = 167;
+            chaWidth = 103;
+
+            GameState.GameBoardHeight = 1080;
+            GameState.GameBoardWidth = 1920;
+
 
             hinterbmp = new Bitmap("lvl1.bmp");
             hinterbmp1 = new Bitmap(hinterbmp, gameSize);
-
-            Bitmap chaRight = new Bitmap("characterRight.png");
-            characterRight = new Bitmap(chaRight, chaWidth, chaHeight);
-            Bitmap chaLeft = new Bitmap("characterLeft.png");
-            characterLeft = new Bitmap(chaLeft, chaWidth, chaHeight);
-            bullet = new Bitmap(100, 100);
-
+         
             anzeige = new Bitmap(gameSize.Width, gameSize.Height);
 
             platform = new Bitmap("platform.png");
-            pbBackGround.ClientSize = hinterbmp1.Size;
-            pbBackGround.Image = hinterbmp1;
+                      
 
             DoubleBuffered = true;
-
-            character = characterRight;
-
-            DrawGameAssets(100,GameState.GroundLevel);
-
-            GamePlatforms = new List<Rectangle>();
-           
-
-            UiComponents.Components = new List<PictureBox>();
-            UiComponents.Viruses = new List<Virus>();
-            UiComponents.Character = this.pbCharacter;
-            UiComponents.BackGround = this.pbBackGround;
-
-            this.timer.Tick += new EventHandler(new CharacterLogic().Logic);
-            this.timervirus.Tick += new EventHandler(new VirusLogic().Logic);
-            this.KeyDown += new KeyEventHandler(new KeyDownEventHandler().Game_KeyDown);
-            this.KeyUp += new KeyEventHandler(new KeyUpEventHandler().Game_KeyUp);
-           
-
-            GameState.GameBoardHeight = 1920;
-            GameState.GameBoardWidth = 1080;
+#endregion
         }
 
 
         private void Game_Load(object sender, EventArgs e)
         {
-            pbBackGround.Size = gameSize;
+#region DesignerKram 
+
+            pbBackGround.Size = gameSize;           
+            pbBackGround.Visible = true;        
+            pbBackGround.BringToFront();
 
             pbCharacterBounds.Size = new Size(chaWidth, chaHeight);
             pbCharacterBounds.Location = new Point(100, GameState.GroundLevel);
-            pbCharacterBounds.Visible = false;
-            //pbCharacterBounds.BackColor = Color.Black;
-            //pbCharacterBounds.BringToFront();
+            pbCharacterBounds.Visible = true;           
+            pbCharacterBounds.BringToFront();
+            pbCharacterBounds.Image = global::Prototype_Virus_Game.Properties.Resources.characterRight;
+            pbCharacterBounds.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbCharacterBounds.BackColor = Color.Transparent;
+            pbCharacterBounds.Parent = pbBackGround;
+            
+            
+
+            GamePlatformsBounds = new List<Rectangle>();
+
+            GamePlatformsBounds.Add(platform1Rec);
+            GamePlatformsBounds.Add(platform2Rec);
+            GamePlatformsBounds.Add(platform3Rec);
+            GamePlatformsBounds.Add(platform4Rec);
+            GamePlatformsBounds.Add(platform5Rec);
+            GamePlatformsBounds.Add(platform6Rec);
+            GamePlatformsBounds.Add(platform7Rec);
+            GamePlatformsBounds.Add(platform8Rec);
+            GamePlatformsBounds.Add(platform9Rec);
+            GamePlatformsBounds.Add(platform10Rec);
 
 
-            pbPlatform1.Size = new Size(326, 95);
-            pbPlatform1.Location = new Point((int)platform1Rec.X, (int)platform1Rec.Y);
-            pbPlatform1.Visible = false;
-            Rectangle platform1Bounds = pbPlatform1.Bounds;
+
+            foreach (var platformBound in GamePlatformsBounds)
+            {
+                Components.GamePlatform platform = new Components.GamePlatform(platformBound);
+
+                ((ISupportInitialize)(platform)).BeginInit();
+                Controls.Add(platform);               
+                ((ISupportInitialize)(platform)).EndInit();
+            }
+                   
+            DrawGameAssets();
 
 
-            pbPlatform2.Size = new Size(326, 95);
-            pbPlatform2.Location = new Point((int)platform2Rec.X, (int)platform2Rec.Y);
-            pbPlatform2.Visible = false;
-            Rectangle platform2Bounds = pbPlatform2.Bounds;
 
-            pbPlatform3.Size = new Size(326, 95);
-            pbPlatform3.Location = new Point((int)platform3Rec.X, (int)platform3Rec.Y);
-            pbPlatform3.Visible = false;
-            Rectangle platform3Bounds = pbPlatform3.Bounds;
+            UiComponents.Components = new List<PictureBox>();
+            UiComponents.Viruses = new List<Virus>();
+            UiComponents.Character = pbCharacter;
+            UiComponents.BackGround = pbBackGround;
 
-            pbPlatform4.Size = new Size(326, 95);
-            pbPlatform4.Location = new Point((int)platform4Rec.X, (int)platform4Rec.Y);
-            pbPlatform4.Visible = false;
-            Rectangle platform4Bounds = pbPlatform4.Bounds;
+            this.timer.Tick += new EventHandler(new CharacterLogic().Logic);
+            this.timervirus.Tick += new EventHandler(new VirusLogic().Logic);
+            this.KeyDown += new KeyEventHandler(new KeyDownEventHandler().Game_KeyDown);
+            this.KeyUp += new KeyEventHandler(new KeyUpEventHandler().Game_KeyUp);
 
-
-            pbBullet.BringToFront();
-            pbBullet.Visible = false;
-            pbBullet.BackColor = Color.Transparent;
-            pbBullet.Parent = pbBackGround;
-
-
-            GamePlatforms.Add(platform1Bounds);
-            GamePlatforms.Add(platform2Bounds);
-            GamePlatforms.Add(platform3Bounds);
-            GamePlatforms.Add(platform4Bounds);
-
-          
 
             for (int i = 0; i < 10; i++)
             {
@@ -152,68 +156,94 @@ namespace Prototype_Virus_Game
             }
 
             foreach (var virus in UiComponents.Viruses)
-            {
+            {                
                 virus.BackColor = Color.Transparent;
                 virus.Parent = pbBackGround;
+                DoubleBuffered = true;
             }
-
-
-            //Graphics gb = Graphics.FromImage(anzeige);
-
-            //gb.DrawImage(hinterbmp1, backgroundRec);
-            //gb.DrawImage(platform, platform1Rec);
-            //gb.DrawImage(platform, platform2Rec);
-            //gb.DrawImage(platform, platform3Rec);
-            //gb.DrawImage(platform, platform4Rec);
-
-
-
-            //gb.Dispose();
-
-
-          
-           
-
+#endregion
         }
 
-        private void StartLevel()
-        {
-            ClientSize = new Size(1920, 1080);
-            GameState.GroundLevel = 820;
-            FormBorderStyle = FormBorderStyle.None;
-            DoubleBuffered = true;
-
-            chaHeight = 167;
-            chaWidth = 103;
-
-        }   
-        
-        public void DrawGameAssets(int x, int y)
-        {
-            Graphics gb = Graphics.FromImage(anzeige);
-
-            gb.DrawImage(hinterbmp1, backgroundRec);
-            gb.DrawImage(platform, platform1Rec);
-            //gb.DrawImage(platform, platform2Rec);
-            //gb.DrawImage(platform, platform3Rec);
-            //gb.DrawImage(platform, platform4Rec);
-
-
-            gb.DrawImage(character, x, y, chaWidth, chaHeight);
-            gb.Dispose();
-
-            pbBackGround.Image = anzeige;
-        }
+#region Methoden
 
         private void MouseClickShootBullet(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                Bullet bullet = new Bullet();              
+                Bullet bullet = new Bullet();
                 bullet.CreateProjectile();
-
-                
             }
         }
+
+
+        public void DrawGameAssets()
+        {
+            Graphics gb = Graphics.FromImage(hinterbmp1);
+
+            gb.DrawImage(hinterbmp1, backgroundRec);
+            Font f = new Font("Arial", 10);
+            int i = 0;
+            foreach (var platformBounds in GamePlatformsBounds)
+            {               
+                gb.DrawImage(platform, platformBounds);
+                gb.DrawString(Convert.ToString(i),f, Brushes.Gray, platformBounds.X, platformBounds.Y);
+                i++;
+            }
+
+            gb.Dispose();
+
+            pbBackGround.Image = hinterbmp1;           
+        }
+       
+
+        public void DrawNewBackGroundImage()
+        {
+            hinterbmp = new Bitmap("lvl1.bmp");
+            hinterbmp1 = new Bitmap(hinterbmp, gameSize);
+       
+
+            anzeige = new Bitmap(gameSize.Width, gameSize.Height);
+
+            platform = new Bitmap("platform.png");
+
+            pbBackGround.ClientSize = hinterbmp1.Size;
+
+            Graphics gb = Graphics.FromImage(anzeige);
+
+            gb.DrawImage(hinterbmp1, backgroundRec);
+
+            foreach (var platformBounds in GamePlatformsBounds)
+            {
+                gb.DrawImage(platform, platformBounds);
+            }
+
+            gb.Dispose();
+
+            int i;
+            string path = @"../NeueBilder";
+            if (!(Directory.Exists(path)))
+            {
+               Directory.CreateDirectory(path);
+            }
+
+            int alreadyInFolder;
+
+            alreadyInFolder = Directory.GetFiles(path,"*.png").Length;
+
+            if (alreadyInFolder > 0)
+            {
+                i = alreadyInFolder + 1;
+            }
+            else
+            {
+                i = 1;
+            }
+
+            string name = $"NeuerBackground{i}.png";
+            anzeige.Save($@"{path}\{name}", ImageFormat.Png);
+            MessageBox.Show("Bild gespeichert!");           
+        }
+
+        #endregion
     }
 }
