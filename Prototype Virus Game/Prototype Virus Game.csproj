@@ -55,6 +55,9 @@
     <Compile Include="Components\Character.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\Platform.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\UiComponents.cs" />
     <Compile Include="Components\Virus.cs">
       <SubType>Component</SubType>
@@ -144,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BlueDot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\characterLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\characterRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
