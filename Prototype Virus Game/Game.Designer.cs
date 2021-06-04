@@ -41,19 +41,11 @@ namespace Prototype_Virus_Game
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pbBullet = new System.Windows.Forms.PictureBox();
             this.pbBackGround = new System.Windows.Forms.PictureBox();
-            this.pbCharacterBounds = new System.Windows.Forms.PictureBox();
-            this.pbPlatform1 = new System.Windows.Forms.PictureBox();
-            this.pbPlatform2 = new System.Windows.Forms.PictureBox();
-            this.pbPlatform3 = new System.Windows.Forms.PictureBox();
-            this.pbPlatform4 = new System.Windows.Forms.PictureBox();
+            this.pbCharacterBounds = new System.Windows.Forms.PictureBox();          
             this.pbCharacter = new Prototype_Virus_Game.Character();
             ((System.ComponentModel.ISupportInitialize)(this.pbBullet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCharacterBounds)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCharacterBounds)).BeginInit();            
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +75,7 @@ namespace Prototype_Virus_Game
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBackGround.BackColor = System.Drawing.Color.White;
+            this.pbBackGround.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.Level_1;
             this.pbBackGround.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbBackGround.Location = new System.Drawing.Point(0, 0);
             this.pbBackGround.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -100,39 +93,7 @@ namespace Prototype_Virus_Game
             this.pbCharacterBounds.Size = new System.Drawing.Size(103, 167);
             this.pbCharacterBounds.TabIndex = 6;
             this.pbCharacterBounds.TabStop = false;
-            this.pbCharacterBounds.Text = "pbCharacterBounds";
-            // 
-            // pbPlatform1
-            // 
-            this.pbPlatform1.Location = new System.Drawing.Point(15, 204);
-            this.pbPlatform1.Name = "pbPlatform1";
-            this.pbPlatform1.Size = new System.Drawing.Size(100, 50);
-            this.pbPlatform1.TabIndex = 6;
-            this.pbPlatform1.TabStop = false;
-            // 
-            // pbPlatform2
-            // 
-            this.pbPlatform2.Location = new System.Drawing.Point(15, 274);
-            this.pbPlatform2.Name = "pbPlatform2";
-            this.pbPlatform2.Size = new System.Drawing.Size(100, 50);
-            this.pbPlatform2.TabIndex = 6;
-            this.pbPlatform2.TabStop = false;
-            // 
-            // pbPlatform3
-            // 
-            this.pbPlatform3.Location = new System.Drawing.Point(0, 0);
-            this.pbPlatform3.Name = "pbPlatform3";
-            this.pbPlatform3.Size = new System.Drawing.Size(100, 50);
-            this.pbPlatform3.TabIndex = 6;
-            this.pbPlatform3.TabStop = false;
-            // 
-            // pbPlatform4
-            // 
-            this.pbPlatform4.Location = new System.Drawing.Point(0, 0);
-            this.pbPlatform4.Name = "pbPlatform4";
-            this.pbPlatform4.Size = new System.Drawing.Size(100, 50);
-            this.pbPlatform4.TabIndex = 6;
-            this.pbPlatform4.TabStop = false;
+            this.pbCharacterBounds.Text = "pbCharacterBounds";                    
             // 
             // pbCharacter
             // 
@@ -152,14 +113,14 @@ namespace Prototype_Virus_Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackColor = System.Drawing.Color.Salmon;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(301, 353);
             this.Controls.Add(this.pbBullet);
             this.Controls.Add(this.pbBackGround);
             this.Controls.Add(this.pbCharacterBounds);
-            this.Controls.Add(this.pbPlatform1);
-            this.Controls.Add(this.pbPlatform2);
+            //this.Controls.Add(this.pbPlatform1);
+            //this.Controls.Add(this.pbPlatform2);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -168,11 +129,7 @@ namespace Prototype_Virus_Game
             this.Load += new System.EventHandler(this.Game_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbBullet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCharacterBounds)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPlatform4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCharacterBounds)).EndInit();            
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
             this.ResumeLayout(false);
 
@@ -202,11 +159,7 @@ namespace Prototype_Virus_Game
         private Timer timervirus;      
         private BackgroundWorker backgroundWorker1;
         private Character pbCharacter;
-        public PictureBox pbCharacterBounds;
-        public PictureBox pbPlatform1;
-        public PictureBox pbPlatform2;
-        private PictureBox pbPlatform3;
-        private PictureBox pbPlatform4;
+        public PictureBox pbCharacterBounds;        
         public PictureBox pbBullet;
     }
 }
