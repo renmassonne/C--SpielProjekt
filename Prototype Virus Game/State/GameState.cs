@@ -21,8 +21,7 @@ namespace Prototype_Virus_Game
         public static bool Fullscreen { get; set; }       
         public static int GroundLevel { get; set; }
         public static bool Shoot { get; set; }
-
-
+        public static bool VirusHit { get; set; }
         static GameState()
         {
             PlayerLookingRight = true;
