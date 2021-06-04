@@ -14,7 +14,7 @@ namespace Prototype_Virus_Game
     {
         public int x;
         public int y;
-
+        int pause = 0;
       
 
         public void Logic(object sender, EventArgs e)
@@ -23,36 +23,38 @@ namespace Prototype_Virus_Game
             y = Game.instance.pbCharacterBounds.Location.Y;
 
             if (GameState.Jump)
-            {
-                
+            {    
+                //if (pause < 3)
                 {
                     if (!(Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel) || GameState.OnPlatform)
                     {
-                    Game.instance.DrawGameAssets(x, y - 200);
+                    //Game.instance.DrawGameAssets(x, y - 50);
                     
                     Game.instance.pbCharacterBounds.Top -= 200;
 
-                        
                         GameState.Jump = false;
 
-
+                        //pause++;
+                        
                     }
 
                 }
-
             }
 
             if (GameState.OnPlatform == false)
             {
-                if (Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel)
+                //if (pause == 2)
                 {
-                    Game.instance.DrawGameAssets(x, y + 10);
+                    if (Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel)
+                    {
+                        //Game.instance.DrawGameAssets(x, y + 10);
 
-                    Game.instance.pbCharacterBounds.Top += 10;
-
-
+                        Game.instance.pbCharacterBounds.Top += 10;
+                        //pause = 0;
+                    }
                 }
             }
+                
 
 
 
@@ -63,7 +65,7 @@ namespace Prototype_Virus_Game
                 {
 
 
-                    Game.instance.DrawGameAssets(x+13, y);
+                    //Game.instance.DrawGameAssets(x+13, y);
 
 
                     Game.instance.pbCharacterBounds.Left += 13;
@@ -77,7 +79,7 @@ namespace Prototype_Virus_Game
                 if (Game.instance.pbCharacterBounds.Location.X > 9)
                 {
 
-                    Game.instance.DrawGameAssets(x - 13, y);
+                    //Game.instance.DrawGameAssets(x - 13, y);
 
                     Game.instance.pbCharacterBounds.Left -= 13;
 
@@ -92,21 +94,26 @@ namespace Prototype_Virus_Game
             {
                 if (GameState.RunLeft && GameState.PlayerLookingRight)
                 {
-                    Game.instance.character = Game.instance.characterLeft;
-                    GameState.PlayerLookingRight = false;
+                    //Game.instance.pbCharacterBounds.Image = global::Prototype_Virus_Game.Properties.Resources.characterLeft;
+                    Game.instance.pbCharacterBounds.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     GameState.PlayerLookingLeft = true;
+                    GameState.PlayerLookingRight = false;
+                    
+                    
 
                 }
                 else if (GameState.RunRight && GameState.PlayerLookingLeft)
                 {
-                    Game.instance.character = Game.instance.characterRight;
-                    GameState.PlayerLookingLeft = false;
+                    //Game.instance.pbCharacterBounds.Image = global::Prototype_Virus_Game.Properties.Resources.characterRight;
+                    Game.instance.pbCharacterBounds.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     GameState.PlayerLookingRight = true;
+                    GameState.PlayerLookingLeft = false;
+                    
                 }
                 GameState.TurnPlayer = false;
             }
 
-            foreach (var platform in Game.instance.GamePlatforms)
+            foreach (var platform in Game.instance.GamePlatformsBounds)
             {
                 if (Game.instance.pbCharacterBounds.Bounds.IntersectsWith(platform))
                 {
@@ -114,7 +121,7 @@ namespace Prototype_Virus_Game
 
                     if (playerFeet > platform.Top - 5 && playerFeet < platform.Top + 5)
                     {
-                        Game.instance.DrawGameAssets(x, platform.Top - Game.instance.chaHeight);
+                        //Game.instance.DrawGameAssets(x, platform.Top - Game.instance.chaHeight);
                         
 
                         Game.instance.pbCharacterBounds.Location = new Point(x, platform.Top - Game.instance.chaHeight);
@@ -126,15 +133,15 @@ namespace Prototype_Virus_Game
             }
             int all = 0;
 
-            foreach (var platform in Game.instance.GamePlatforms)
+            foreach (var platform in Game.instance.GamePlatformsBounds)
             {
                
-                if (x + Game.instance.chaWidth <= platform.Left || x >= platform.Right || y + Game.instance.chaHeight < platform.Top || y + Game.instance.chaHeight > platform.Top)
+                if (x + Game.instance.chaWidth <= platform.Left || x  >= platform.Right || y + Game.instance.chaHeight < platform.Top || y + Game.instance.chaHeight > platform.Top)
                 {
                     all += 1;
                 }
             }
-            if (all == Game.instance.GamePlatforms.Count)
+            if (all == Game.instance.GamePlatformsBounds.Count)
                 GameState.OnPlatform = false;
         }
         
