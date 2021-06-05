@@ -12,7 +12,7 @@ namespace Prototype_Virus_Game.GameLogic
     {
 
         PictureBox bullet;
-        Timer bulletTimer = new Timer(); 
+        Timer bulletTimer = new Timer();
 
         public void CreateProjectile()
         {
@@ -20,8 +20,8 @@ namespace Prototype_Virus_Game.GameLogic
             bullet.Size = new Size(15, 15);
             bullet.SizeMode = PictureBoxSizeMode.StretchImage;
             bullet.Image = global::Prototype_Virus_Game.Properties.Resources.BlueDot;
-            //Game.instance.Controls.Add(bullet);
-           
+
+
             bullet.BackColor = Color.Transparent;
             bullet.Parent = Game.instance.pbBackGround;
 
@@ -43,30 +43,26 @@ namespace Prototype_Virus_Game.GameLogic
             bulletTimer.Start();
         }
 
+
+
+        private void RemoveBullet()
+        {
+            bulletTimer.Stop();
+            bulletTimer.Dispose();
+            bulletTimer = null;
+
+            bullet.Dispose();
+            bullet = null;
+        }
+
+
+
+
+
         public void bulletTimerTick(object sender, EventArgs e)
         {
-            
 
-            foreach (var virus in UiComponents.Viruses)
-            {                           
-                    if (virus.Bounds.IntersectsWith(bullet.Bounds))
-                    {
-                        GameState.VirusHit = true;
 
-                        Game.instance.Controls.Remove(virus);
-                        virus.Dispose();
-
-                        if (GameState.VirusHit)
-                        {
-                            GameState.HighScore = GameState.HighScore + 5;
-                            Game.instance.lblScore.Text = Convert.ToString(GameState.HighScore);
-                        }
-                    }
-                    else
-                    {
-                        GameState.VirusHit = false;
-                    }
-            }
 
             if (bullet.Location.X > Game.instance.pbCharacterBounds.Location.X)
             {
@@ -76,14 +72,7 @@ namespace Prototype_Virus_Game.GameLogic
                 }
                 else
                 {
-                    bulletTimer.Stop();
-                    bulletTimer.Dispose();
-                    //Game.instance.Controls.Remove(bullet);
-                    
-                    bullet.Dispose();
-                    bulletTimer = null;
-                    bullet = null;
-
+                    RemoveBullet();
                 }
             }
             else if (bullet.Location.X < Game.instance.pbCharacterBounds.Location.X)
@@ -95,25 +84,42 @@ namespace Prototype_Virus_Game.GameLogic
 
                 else
                 {
-                    bulletTimer.Stop();
-                    bulletTimer.Dispose();
-                    //Game.instance.Controls.Remove(bullet);                  
-                    bullet.Dispose();
-                    bulletTimer = null;
-                    bullet = null;
+                    RemoveBullet();
                 }
 
             }
 
-            if (GameState.VirusHit)
+            if (bullet != null)
             {
-                bulletTimer.Stop();
-                bulletTimer.Dispose();
-                //Game.instance.Controls.Remove(bullet);              
-                bullet.Dispose();
-                bulletTimer = null;
-                bullet = null;
+                foreach (var virus in UiComponents.Viruses)
+                {
+                    if (virus.Bounds.IntersectsWith(bullet.Bounds))
+                    {
+                        GameState.VirusHit = true;
+                        virus.Dead = true;
+
+                        Game.instance.Controls.Remove(virus);
+                        virus.Dispose();
+                        RemoveBullet();
+
+                        GameState.HighScore = GameState.HighScore + 5;
+                        Game.instance.lblScore.Text = "Score: " + Convert.ToString(GameState.HighScore);
+
+                        break;
+                    }
+                    else
+                    {
+                        GameState.VirusHit = false;
+                    }
+                }
             }
+
+            if (GameState.VirusHit == true)
+            {
+                
+                UiComponents.Viruses.RemoveAll(item => item.Dead == true);               
+            }
+
         }
     }
 }
