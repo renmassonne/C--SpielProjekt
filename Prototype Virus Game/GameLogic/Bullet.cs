@@ -12,7 +12,7 @@ namespace Prototype_Virus_Game.GameLogic
     {
 
         PictureBox bullet;
-        Timer bulletTimer = new Timer();       
+        Timer bulletTimer = new Timer(); 
 
         public void CreateProjectile()
         {
@@ -45,22 +45,27 @@ namespace Prototype_Virus_Game.GameLogic
 
         public void bulletTimerTick(object sender, EventArgs e)
         {
+            
 
             foreach (var virus in UiComponents.Viruses)
             {                           
                     if (virus.Bounds.IntersectsWith(bullet.Bounds))
                     {
                         GameState.VirusHit = true;
-                        //UiComponents.RemoveVirus(virus);
+
                         Game.instance.Controls.Remove(virus);
                         virus.Dispose();
-                        
+
+                        if (GameState.VirusHit)
+                        {
+                            GameState.HighScore = GameState.HighScore + 5;
+                            Game.instance.lblScore.Text = Convert.ToString(GameState.HighScore);
+                        }
                     }
                     else
                     {
                         GameState.VirusHit = false;
                     }
-                
             }
 
             if (bullet.Location.X > Game.instance.pbCharacterBounds.Location.X)
@@ -68,7 +73,6 @@ namespace Prototype_Virus_Game.GameLogic
                 if (bullet.Left < Game.instance.pbBackGround.Width)
                 {
                     bullet.Left += 20;
-
                 }
                 else
                 {
@@ -109,10 +113,7 @@ namespace Prototype_Virus_Game.GameLogic
                 bullet.Dispose();
                 bulletTimer = null;
                 bullet = null;
-
             }
-            
-
         }
     }
 }

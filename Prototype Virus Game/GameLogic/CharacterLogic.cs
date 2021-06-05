@@ -15,7 +15,6 @@ namespace Prototype_Virus_Game
         public int x;
         public int y;
         int pause = 0;
-      
 
         public void Logic(object sender, EventArgs e)
         {
@@ -113,6 +112,22 @@ namespace Prototype_Virus_Game
                 GameState.TurnPlayer = false;
             }
 
+            foreach (var virus in UiComponents.Viruses)
+            {
+
+                if (virus.Bounds.IntersectsWith(Game.instance.pbCharacterBounds.Bounds))
+                {
+                    GameState.PlayerGotHit = true;
+                    playerHealth(GameState.PlayerGotHit);
+                    Game.instance.Controls.Remove(virus);
+                    virus.Dispose();
+                }
+                else
+                {
+                    GameState.PlayerGotHit = false;
+                }
+            }
+
             foreach (var platform in Game.instance.GamePlatformsBounds)
             {
                 if (Game.instance.pbCharacterBounds.Bounds.IntersectsWith(platform))
@@ -143,8 +158,42 @@ namespace Prototype_Virus_Game
             }
             if (all == Game.instance.GamePlatformsBounds.Count)
                 GameState.OnPlatform = false;
+
         }
-        
+
+        private void playerHealth(bool playerGotHit)
+        {
+            if (GameState.PlayerGotHit)
+            {
+                GameState.playerHealth--;
+
+                if (GameState.playerHealth == 3)
+                {
+                    Game.instance.pbHealth.Visible = true;
+                    Game.instance.pbHealth1.Visible = true;
+                    Game.instance.pbHealth2.Visible = true;
+                }
+                else if (GameState.playerHealth == 2)
+                {
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = true;
+                    Game.instance.pbHealth2.Visible = true;
+                }
+                else if (GameState.playerHealth == 1)
+                {
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = false;
+                    Game.instance.pbHealth2.Visible = true;
+                }
+                else
+                {
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = false;
+                    Game.instance.pbHealth2.Visible = false;
+                    // Overlay erscheint -> GameOver
+                }
+            }
+        }
     }
 }
 

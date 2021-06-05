@@ -50,11 +50,8 @@ namespace Prototype_Virus_Game
         public Rectangle platform9Rec = new Rectangle(750, 600, 326, 95);
         public Rectangle platform10Rec = new Rectangle(250, 200, 326, 95);
 
-
         public List<Rectangle> GamePlatformsBounds;
 
-
-     
 
         public Game()
         {
@@ -81,7 +78,6 @@ namespace Prototype_Virus_Game
             anzeige = new Bitmap(gameSize.Width, gameSize.Height);
 
             platform = new Bitmap("platform.png");
-                      
 
             DoubleBuffered = true;
 #endregion
@@ -104,8 +100,23 @@ namespace Prototype_Virus_Game
             pbCharacterBounds.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCharacterBounds.BackColor = Color.Transparent;
             pbCharacterBounds.Parent = pbBackGround;
-            
-            
+
+            lblScore.Text = Convert.ToString(GameState.HighScore);
+            lblScore.Parent = pbBackGround;
+            lblScore.BringToFront();
+
+            //To Display Health
+            pbHealth.Parent = pbBackGround;
+            pbHealth.Location = new Point(1840,20);
+            pbHealth.BringToFront();
+
+            pbHealth1.Parent = pbBackGround;
+            pbHealth1.Location = new Point(1780, 20);
+            pbHealth1.BringToFront();
+
+            pbHealth2.Parent = pbBackGround;
+            pbHealth2.Location = new Point(1720, 20);
+            pbHealth2.BringToFront();
 
             GamePlatformsBounds = new List<Rectangle>();
 
@@ -161,18 +172,37 @@ namespace Prototype_Virus_Game
                 virus.Parent = pbBackGround;
                 DoubleBuffered = true;
             }
-#endregion
+
+
+                foreach (var virus in UiComponents.Viruses)
+                {
+
+                    if (virus.Bounds.IntersectsWith(pbCharacterBounds.Bounds))
+                    {
+                        GameState.PlayerGotHit = true;
+                        Game.instance.Controls.Remove(virus);
+                        virus.Dispose();
+                    }
+                    else
+                    {
+                        GameState.PlayerGotHit = false;
+                    }
+                }
+       
+            #endregion
         }
 
 #region Methoden
 
         private void MouseClickShootBullet(object sender, MouseEventArgs e)
         {
+        
             if (e.Button == MouseButtons.Left)
             {
                 Bullet bullet = new Bullet();
                 bullet.CreateProjectile();
             }
+
         }
 
 
@@ -182,6 +212,8 @@ namespace Prototype_Virus_Game
 
             gb.DrawImage(hinterbmp1, backgroundRec);
             Font f = new Font("Arial", 10);
+            Font fScore = new Font("Arial", 24);
+
             int i = 0;
             foreach (var platformBounds in GamePlatformsBounds)
             {               
@@ -194,7 +226,8 @@ namespace Prototype_Virus_Game
 
             pbBackGround.Image = hinterbmp1;           
         }
-       
+
+      
 
         public void DrawNewBackGroundImage()
         {
@@ -245,5 +278,10 @@ namespace Prototype_Virus_Game
         }
 
         #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
