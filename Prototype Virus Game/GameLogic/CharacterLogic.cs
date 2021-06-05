@@ -92,22 +92,16 @@ namespace Prototype_Virus_Game
             if (GameState.TurnPlayer)
             {
                 if (GameState.RunLeft && GameState.PlayerLookingRight)
-                {
-                    //Game.instance.pbCharacterBounds.Image = global::Prototype_Virus_Game.Properties.Resources.characterLeft;
+                {                
                     Game.instance.pbCharacterBounds.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     GameState.PlayerLookingLeft = true;
-                    GameState.PlayerLookingRight = false;
-                    
-                    
-
+                    GameState.PlayerLookingRight = false;                                    
                 }
                 else if (GameState.RunRight && GameState.PlayerLookingLeft)
                 {
-                    //Game.instance.pbCharacterBounds.Image = global::Prototype_Virus_Game.Properties.Resources.characterRight;
                     Game.instance.pbCharacterBounds.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     GameState.PlayerLookingRight = true;
-                    GameState.PlayerLookingLeft = false;
-                    
+                    GameState.PlayerLookingLeft = false;                
                 }
                 GameState.TurnPlayer = false;
             }
@@ -118,15 +112,13 @@ namespace Prototype_Virus_Game
                 if (virus.Bounds.IntersectsWith(Game.instance.pbCharacterBounds.Bounds))
                 {
                     GameState.PlayerGotHit = true;
-                    playerHealth(GameState.PlayerGotHit);
+                    virus.Dead = true;                               
                     Game.instance.Controls.Remove(virus);
                     virus.Dispose();
-                }
-                else
-                {
-                    GameState.PlayerGotHit = false;
-                }
+                }              
             }
+            Game.instance.PlayerGotHit();
+
 
             foreach (var platform in Game.instance.GamePlatformsBounds)
             {
@@ -161,39 +153,7 @@ namespace Prototype_Virus_Game
 
         }
 
-        private void playerHealth(bool playerGotHit)
-        {
-            if (GameState.PlayerGotHit)
-            {
-                GameState.playerHealth--;
-
-                if (GameState.playerHealth == 3)
-                {
-                    Game.instance.pbHealth.Visible = true;
-                    Game.instance.pbHealth1.Visible = true;
-                    Game.instance.pbHealth2.Visible = true;
-                }
-                else if (GameState.playerHealth == 2)
-                {
-                    Game.instance.pbHealth.Visible = false;
-                    Game.instance.pbHealth1.Visible = true;
-                    Game.instance.pbHealth2.Visible = true;
-                }
-                else if (GameState.playerHealth == 1)
-                {
-                    Game.instance.pbHealth.Visible = false;
-                    Game.instance.pbHealth1.Visible = false;
-                    Game.instance.pbHealth2.Visible = true;
-                }
-                else
-                {
-                    Game.instance.pbHealth.Visible = false;
-                    Game.instance.pbHealth1.Visible = false;
-                    Game.instance.pbHealth2.Visible = false;
-                    // Overlay erscheint -> GameOver
-                }
-            }
-        }
+       
     }
 }
 
