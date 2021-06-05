@@ -17,7 +17,7 @@ namespace Prototype_Virus_Game
                 {
                     virus.RecalculateTargetPosition();
                 }
-            }
+            }            
         }
 
         private void MoveVirusToTargetPosition(Virus virus)
@@ -39,6 +39,7 @@ namespace Prototype_Virus_Game
                 virus.Location = orignalLocation;
                 virus.RecalculateTargetPosition();
             }
+            
         }
 
         private bool IntersectsWithNonPlayerUiComponent(Virus virus)
