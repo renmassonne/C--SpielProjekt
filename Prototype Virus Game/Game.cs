@@ -42,7 +42,7 @@ namespace Prototype_Virus_Game
         public Rectangle platform1Rec = new Rectangle(50, 400, 326, 95);
         public Rectangle platform2Rec = new Rectangle(200, 800, 326, 95);
         public Rectangle platform3Rec = new Rectangle(350, 650, 326, 95);
-        public Rectangle platform4Rec = new Rectangle(500, 370 , 326, 95);
+        public Rectangle platform4Rec = new Rectangle(500, 400 , 326, 95);
         public Rectangle platform5Rec = new Rectangle(750, 220, 326, 95);
         public Rectangle platform6Rec = new Rectangle(1300, 200, 326, 95);
         public Rectangle platform7Rec = new Rectangle(1250, 500, 326, 95);
@@ -68,10 +68,9 @@ namespace Prototype_Virus_Game
             chaHeight = 167;
             chaWidth = 103;
 
-            GameState.GameBoardHeight = 1080;
             GameState.GameBoardWidth = 1920;
-
-
+            GameState.GameBoardHeight = 1080;
+            
             hinterbmp = new Bitmap("lvl1.bmp");
             hinterbmp1 = new Bitmap(hinterbmp, gameSize);
          
@@ -101,9 +100,12 @@ namespace Prototype_Virus_Game
             pbCharacterBounds.BackColor = Color.Transparent;
             pbCharacterBounds.Parent = pbBackGround;
 
-            lblScore.Text = Convert.ToString(GameState.HighScore);
+           
             lblScore.Parent = pbBackGround;
             lblScore.BringToFront();
+            lblScore.Location = new Point(gameSize.Width / 2 - lblScore.Width, 20);
+
+            lblLevelDisplay.BringToFront();
 
             //To Display Health
             pbHealth.Parent = pbBackGround;
@@ -144,50 +146,21 @@ namespace Prototype_Virus_Game
                    
             DrawGameAssets();
 
-
+            StartLevel();
 
             UiComponents.Components = new List<PictureBox>();
             UiComponents.Viruses = new List<Virus>();
             UiComponents.Character = pbCharacter;
             UiComponents.BackGround = pbBackGround;
 
-            this.timer.Tick += new EventHandler(new CharacterLogic().Logic);
-            this.timervirus.Tick += new EventHandler(new VirusLogic().Logic);
+            this.gameTimer.Tick += new EventHandler(new CharacterLogic().Logic);
+            this.virusTimer.Tick += new EventHandler(new VirusLogic().Logic);
             this.KeyDown += new KeyEventHandler(new KeyDownEventHandler().Game_KeyDown);
             this.KeyUp += new KeyEventHandler(new KeyUpEventHandler().Game_KeyUp);
 
-
-            for (int i = 0; i < 10; i++)
-            {
-                var virus = new Virus();
-                UiComponents.AddVirus(virus);
-                ((ISupportInitialize)(virus)).BeginInit();
-                this.Controls.Add(virus);
-                ((ISupportInitialize)(virus)).EndInit();
-            }
-
-            foreach (var virus in UiComponents.Viruses)
-            {                
-                virus.BackColor = Color.Transparent;
-                virus.Parent = pbBackGround;
-                DoubleBuffered = true;
-            }
-
-
-                foreach (var virus in UiComponents.Viruses)
-                {
-
-                    if (virus.Bounds.IntersectsWith(pbCharacterBounds.Bounds))
-                    {
-                        GameState.PlayerGotHit = true;
-                        Game.instance.Controls.Remove(virus);
-                        virus.Dispose();
-                    }
-                    else
-                    {
-                        GameState.PlayerGotHit = false;
-                    }
-                }
+            this.pbCharacterBounds.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseClickShootBullet);
+           
+                      
        
             #endregion
         }
@@ -196,13 +169,11 @@ namespace Prototype_Virus_Game
 
         private void MouseClickShootBullet(object sender, MouseEventArgs e)
         {
-        
             if (e.Button == MouseButtons.Left)
             {
                 Bullet bullet = new Bullet();
                 bullet.CreateProjectile();
             }
-
         }
 
 
@@ -211,10 +182,9 @@ namespace Prototype_Virus_Game
             Graphics gb = Graphics.FromImage(hinterbmp1);
 
             gb.DrawImage(hinterbmp1, backgroundRec);
-            Font f = new Font("Arial", 10);
-            Font fScore = new Font("Arial", 24);
+            Font f = new Font("Arial", 10);           
 
-            int i = 0;
+            int i = 1;
             foreach (var platformBounds in GamePlatformsBounds)
             {               
                 gb.DrawImage(platform, platformBounds);
@@ -226,8 +196,101 @@ namespace Prototype_Virus_Game
 
             pbBackGround.Image = hinterbmp1;           
         }
+        
+      public void GameOver()
+      {
+            GameOver go = new GameOver();
+            virusTimer.Enabled = false;
+            gameTimer.Enabled = false;
 
-      
+            go.Show();          
+      }
+
+        public void PlayerGotHit()
+        {                  
+            if (GameState.PlayerGotHit)
+            {
+                GameState.playerHealth--;
+            }
+            
+
+                if (GameState.playerHealth == 3)
+                {
+                    Game.instance.pbHealth.Visible = true;
+                    Game.instance.pbHealth1.Visible = true;
+                    Game.instance.pbHealth2.Visible = true;
+                }
+                else if (GameState.playerHealth == 2)
+                {
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = true;
+                    Game.instance.pbHealth2.Visible = true;
+                }
+                else if (GameState.playerHealth == 1)
+                {
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = false;
+                    Game.instance.pbHealth2.Visible = true;
+                }
+                else
+                {
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = false;
+                    Game.instance.pbHealth2.Visible = false;
+
+                    Game.instance.GameOver();
+                }
+
+            UiComponents.Viruses.RemoveAll(item => item.Dead == true);
+            GameState.PlayerGotHit = false;
+        }
+
+        private void StartLevel()
+        {
+            
+
+            pbCharacterBounds.Location = new Point(-100, GameState.GroundLevel);
+
+            System.Windows.Forms.Timer start = new System.Windows.Forms.Timer();
+            start.Enabled = true;
+            start.Interval = 20;
+            start.Tick += new EventHandler(MoveFirstSteps);
+
+
+            virusTimer.Enabled = true;
+            gameTimer.Enabled = true;
+
+            void MoveFirstSteps(object sender, EventArgs e)
+            {
+                if (pbCharacterBounds.Location.X < 100)
+                {
+                    pbCharacterBounds.Left += 3;
+                }
+                else
+                {
+                   start.Enabled = false;
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        var virus = new Virus();
+
+                        UiComponents.AddVirus(virus);
+                        ((ISupportInitialize)(virus)).BeginInit();
+                        virus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseClickShootBullet);
+                        this.Controls.Add(virus);
+                        ((ISupportInitialize)(virus)).EndInit();
+                    }
+
+                    foreach (var virus in UiComponents.Viruses)
+                    {
+                        virus.BackColor = Color.Transparent;
+                        virus.Parent = pbBackGround;
+                        DoubleBuffered = true;
+                    }
+                }
+            }
+        }
+        
 
         public void DrawNewBackGroundImage()
         {
@@ -277,11 +340,10 @@ namespace Prototype_Virus_Game
             MessageBox.Show("Bild gespeichert!");           
         }
 
-        #endregion
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
-        }
+        #endregion       
+
+        
     }
 }
