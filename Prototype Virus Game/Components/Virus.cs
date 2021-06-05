@@ -14,10 +14,10 @@ namespace Prototype_Virus_Game
 
         public Point TargetPosition { get; set; }
 
+        public bool Dead;
         public Virus()
         {
-            Anchor = System.Windows.Forms.AnchorStyles.None;
-            BackColor = System.Drawing.Color.White;
+            Anchor = System.Windows.Forms.AnchorStyles.None;          
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             Image = ScaleImage(global::Prototype_Virus_Game.Properties.Resources.Hilde,100, 76);
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -25,8 +25,8 @@ namespace Prototype_Virus_Game
             Size = new System.Drawing.Size(100, 76);
             SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             TabIndex = 3;
-            TabStop = false;
-           
+            TabStop = false;           
+
 
             PositionVirus();
             TargetPosition = CalculateRandomPosition();
