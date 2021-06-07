@@ -40,20 +40,20 @@ namespace Prototype_Virus_Game
             this.virusTimer = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblScore = new System.Windows.Forms.Label();
+            this.lblLevelDisplay = new System.Windows.Forms.Label();
+            this.pbHealth2 = new System.Windows.Forms.PictureBox();
+            this.pbHealth1 = new System.Windows.Forms.PictureBox();
             this.pbHealth = new System.Windows.Forms.PictureBox();
             this.pbBullet = new System.Windows.Forms.PictureBox();
             this.pbBackGround = new System.Windows.Forms.PictureBox();
             this.pbCharacterBounds = new System.Windows.Forms.PictureBox();
-            this.pbHealth1 = new System.Windows.Forms.PictureBox();
-            this.pbHealth2 = new System.Windows.Forms.PictureBox();
             this.pbCharacter = new Prototype_Virus_Game.Character();
-            this.lblLevelDisplay = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHealth2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHealth1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHealth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBullet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacterBounds)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHealth1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHealth2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +77,44 @@ namespace Prototype_Virus_Game
             this.lblScore.TabIndex = 9;
             this.lblScore.Text = "Score: ";
             // 
+            // lblLevelDisplay
+            // 
+            this.lblLevelDisplay.AutoSize = true;
+            this.lblLevelDisplay.BackColor = System.Drawing.Color.DarkGray;
+            this.lblLevelDisplay.Font = new System.Drawing.Font("Segoe Print", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLevelDisplay.Location = new System.Drawing.Point(20, 20);
+            this.lblLevelDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLevelDisplay.Name = "lblLevelDisplay";
+            this.lblLevelDisplay.Size = new System.Drawing.Size(135, 50);
+            this.lblLevelDisplay.TabIndex = 13;
+            this.lblLevelDisplay.Text = "Level 1 ";
+            // 
+            // pbHealth2
+            // 
+            this.pbHealth2.BackColor = System.Drawing.Color.Transparent;
+            this.pbHealth2.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.Hearth;
+            this.pbHealth2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbHealth2.InitialImage = null;
+            this.pbHealth2.Location = new System.Drawing.Point(37, 33);
+            this.pbHealth2.Margin = new System.Windows.Forms.Padding(4);
+            this.pbHealth2.Name = "pbHealth2";
+            this.pbHealth2.Size = new System.Drawing.Size(77, 62);
+            this.pbHealth2.TabIndex = 12;
+            this.pbHealth2.TabStop = false;
+            // 
+            // pbHealth1
+            // 
+            this.pbHealth1.BackColor = System.Drawing.Color.Transparent;
+            this.pbHealth1.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.Hearth;
+            this.pbHealth1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbHealth1.InitialImage = null;
+            this.pbHealth1.Location = new System.Drawing.Point(123, 33);
+            this.pbHealth1.Margin = new System.Windows.Forms.Padding(4);
+            this.pbHealth1.Name = "pbHealth1";
+            this.pbHealth1.Size = new System.Drawing.Size(77, 62);
+            this.pbHealth1.TabIndex = 11;
+            this.pbHealth1.TabStop = false;
+            // 
             // pbHealth
             // 
             this.pbHealth.BackColor = System.Drawing.Color.Transparent;
@@ -92,7 +130,7 @@ namespace Prototype_Virus_Game
             // 
             // pbBullet
             // 
-            this.pbBullet.Image = global::Prototype_Virus_Game.Properties.Resources.BlueDot;
+            this.pbBullet.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.BlueDot;
             this.pbBullet.Location = new System.Drawing.Point(123, 133);
             this.pbBullet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbBullet.Name = "pbBullet";
@@ -107,7 +145,7 @@ namespace Prototype_Virus_Game
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBackGround.BackColor = System.Drawing.Color.White;
-            this.pbBackGround.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.Level_1;
+            this.pbBackGround.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.lvl1;
             this.pbBackGround.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbBackGround.Location = new System.Drawing.Point(0, 0);
             this.pbBackGround.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -128,32 +166,6 @@ namespace Prototype_Virus_Game
             this.pbCharacterBounds.TabStop = false;
             this.pbCharacterBounds.Text = "pbCharacterBounds";
             // 
-            // pbHealth1
-            // 
-            this.pbHealth1.BackColor = System.Drawing.Color.Transparent;
-            this.pbHealth1.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.Hearth;
-            this.pbHealth1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbHealth1.InitialImage = null;
-            this.pbHealth1.Location = new System.Drawing.Point(123, 33);
-            this.pbHealth1.Margin = new System.Windows.Forms.Padding(4);
-            this.pbHealth1.Name = "pbHealth1";
-            this.pbHealth1.Size = new System.Drawing.Size(77, 62);
-            this.pbHealth1.TabIndex = 11;
-            this.pbHealth1.TabStop = false;
-            // 
-            // pbHealth2
-            // 
-            this.pbHealth2.BackColor = System.Drawing.Color.Transparent;
-            this.pbHealth2.BackgroundImage = global::Prototype_Virus_Game.Properties.Resources.Hearth;
-            this.pbHealth2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbHealth2.InitialImage = null;
-            this.pbHealth2.Location = new System.Drawing.Point(37, 33);
-            this.pbHealth2.Margin = new System.Windows.Forms.Padding(4);
-            this.pbHealth2.Name = "pbHealth2";
-            this.pbHealth2.Size = new System.Drawing.Size(77, 62);
-            this.pbHealth2.TabIndex = 12;
-            this.pbHealth2.TabStop = false;
-            // 
             // pbCharacter
             // 
             this.pbCharacter.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -167,18 +179,6 @@ namespace Prototype_Virus_Game
             this.pbCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCharacter.TabIndex = 3;
             this.pbCharacter.TabStop = false;
-            // 
-            // lblLevelDisplay
-            // 
-            this.lblLevelDisplay.AutoSize = true;
-            this.lblLevelDisplay.BackColor = System.Drawing.Color.DarkGray;
-            this.lblLevelDisplay.Font = new System.Drawing.Font("Segoe Print", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLevelDisplay.Location = new System.Drawing.Point(20, 20);
-            this.lblLevelDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblLevelDisplay.Name = "lblLevelDisplay";
-            this.lblLevelDisplay.Size = new System.Drawing.Size(135, 50);
-            this.lblLevelDisplay.TabIndex = 13;
-            this.lblLevelDisplay.Text = "Level 1 ";
             // 
             // Game
             // 
@@ -201,12 +201,12 @@ namespace Prototype_Virus_Game
             this.Text = "Virus Game";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.Load += new System.EventHandler(this.Game_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbHealth2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHealth1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHealth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBullet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacterBounds)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHealth1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHealth2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -233,8 +233,8 @@ namespace Prototype_Virus_Game
 
         #endregion
         public PictureBox pbBackGround;
-        private Timer gameTimer;
-        private Timer virusTimer;      
+        public Timer gameTimer;
+        public Timer virusTimer;      
         private BackgroundWorker backgroundWorker1;
         private Character pbCharacter;
         public PictureBox pbCharacterBounds;        
