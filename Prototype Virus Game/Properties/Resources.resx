@@ -118,37 +118,76 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="HildeTeiler" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HildeTeiler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HildeFettOhneSchild" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HildeFettOhneSchild.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="characterRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\characterRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="platform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\platform1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="richtiges bild" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\richtiges bild.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ghostclanital" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ghostclanital.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="characterLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\characterLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Unbenannt-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unbenannt-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Hilde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hilde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Level-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Level-1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BlueDot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BlueDot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Stones-game-Thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Stones-game-Thumbnail.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ghostclanital" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghostclanital.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HildeAggro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HildeAggro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="platform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\platform1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HildeMutiert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HildeMutiert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Hearth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hearth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boss" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boss.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HildeTeleporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HildeTeleporter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HildeFett" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HildeFett.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VirusDick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VirusDick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VirusDickSchild" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VirusDickSchild.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VirusNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VirusNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VirusTeleporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VirusTeleporter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl1_plattform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl1_plattform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl2_plattform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl2_plattform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl3_plattform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl3_plattform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
