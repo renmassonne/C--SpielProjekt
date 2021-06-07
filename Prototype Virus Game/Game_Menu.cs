@@ -14,23 +14,19 @@ namespace Prototype_Virus_Game
     {
         public Game_Menu()
         {
-            InitializeComponent();
-
-            //if (GameState.Fullscreen == false)
-            //    btnVollbildToggle.Text = "Vollbild: Aus";
-
-            //else if (GameState.Fullscreen == true)
-            //    btnVollbildToggle.Text = "Vollbild: An";
+            InitializeComponent();        
         }
 
         private void btnWeiter_Click(object sender, EventArgs e)
         {
             Close();
+            Game.instance.virusTimer.Start();
+            Game.instance.gameTimer.Start();
         }
 
         private void btnVollbildToggle_Click(object sender, EventArgs e)
         {
-            //Game.instance.ChangeResolution();
+            
             Close();
         }
 
