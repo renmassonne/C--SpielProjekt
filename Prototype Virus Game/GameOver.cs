@@ -22,5 +22,10 @@ namespace Prototype_Virus_Game
         {
             Application.Restart();
         }
+
+        private void btnBackToMenu_Click(object sender, EventArgs e)
+        {
+            Game.instance.Close();
+        }
     }
 }
