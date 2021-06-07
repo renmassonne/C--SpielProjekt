@@ -11,18 +11,14 @@ namespace Prototype_Virus_Game
     {
         public void Game_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.A)
             {
-
                 GameState.RunLeft = true;
-
 
                 if (GameState.PlayerLookingRight == true)
                 {
-
-
                     GameState.TurnPlayer = true;
-
                 }
 
             }
@@ -39,16 +35,23 @@ namespace Prototype_Virus_Game
             }
 
 
+            if (e.KeyCode == Keys.S)
+            {
+                GameState.JumpDown = true;             
+            }
 
-                if (e.KeyCode == Keys.Space)
+
+            if (e.KeyCode == Keys.Space)
             {               
                
-                GameState.Jump = true;
-                
+                GameState.Jump = true;          
             }
+
             if (e.KeyCode == Keys.Escape)
             {
                 Game_Menu gm = new Game_Menu();
+                Game.instance.virusTimer.Stop();
+                Game.instance.gameTimer.Stop();
                 gm.Show();
                 
             }
