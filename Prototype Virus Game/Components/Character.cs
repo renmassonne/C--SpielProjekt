@@ -9,7 +9,7 @@ namespace Prototype_Virus_Game
             Anchor = System.Windows.Forms.AnchorStyles.None;
             BackColor = System.Drawing.Color.White;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            Image = global::Prototype_Virus_Game.Properties.Resources.richtiges_bild;
+            Image = global::Prototype_Virus_Game.Properties.Resources.characterRight;
             Location = new System.Drawing.Point(157, 439);
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "pbCharacter";
