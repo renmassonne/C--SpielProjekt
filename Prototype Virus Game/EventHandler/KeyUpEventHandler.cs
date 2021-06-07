@@ -27,6 +27,13 @@ namespace Prototype_Virus_Game
                 GameState.RunLeft = false;
 
             }
+
+            if (e.KeyCode == Keys.S)
+            {
+
+                GameState.JumpDown = false;
+
+            }
         }
     }
 }
