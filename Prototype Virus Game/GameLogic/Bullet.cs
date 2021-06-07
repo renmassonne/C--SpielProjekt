@@ -96,16 +96,28 @@ namespace Prototype_Virus_Game.GameLogic
                     if (virus.Bounds.IntersectsWith(bullet.Bounds))
                     {
                         GameState.VirusHit = true;
-                        virus.Dead = true;
+                        virus.VirusHealth -= 1;
 
-                        Game.instance.Controls.Remove(virus);
-                        virus.Dispose();
                         RemoveBullet();
 
-                        GameState.HighScore = GameState.HighScore + 5;
-                        Game.instance.lblScore.Text = "Score: " + Convert.ToString(GameState.HighScore);
+                       if (virus.VirusHealth == 1  && virus is ShieldedVirus)
+                       {
+                            virus.Image = Properties.Resources.VirusDick;
+                       }
 
+                        if (virus.VirusHealth == 0)
+                        {
+                            Game.instance.Controls.Remove(virus);
+                            virus.Dispose();
+                            virus.Dead = true;
+
+                            GameState.HighScore = GameState.HighScore + 5;
+                            Game.instance.lblScore.Text = "Score: " + Convert.ToString(GameState.HighScore);
+
+                            break;
+                        }
                         break;
+
                     }
                     else
                     {
@@ -116,8 +128,8 @@ namespace Prototype_Virus_Game.GameLogic
 
             if (GameState.VirusHit == true)
             {
-                
-                UiComponents.Viruses.RemoveAll(item => item.Dead == true);               
+
+                UiComponents.Viruses.RemoveAll(item => item.Dead == true);
             }
 
         }
