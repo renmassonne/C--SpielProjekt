@@ -12,6 +12,7 @@ namespace Prototype_Virus_Game
         {
             foreach (var virus in UiComponents.Viruses)
             {
+               
                 MoveVirusToTargetPosition(virus);
                 if(virus.IsTargetPositionReached())
                 {
