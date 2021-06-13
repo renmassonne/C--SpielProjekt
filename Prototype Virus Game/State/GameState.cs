@@ -29,6 +29,7 @@ namespace Prototype_Virus_Game
         public static bool VirusHit { get; set; }     
         public static int playerHealth { get; set; } = 3;
         public static int HighScore { get; set; }
+        public static List<HighScoreEntry> HighScoreList { get; set; }
 
         static GameState()
         {

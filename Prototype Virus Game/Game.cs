@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
@@ -26,6 +27,7 @@ namespace Prototype_Virus_Game
         private Bitmap hinterbmp1;
         private Bitmap anzeige;
         private Bitmap platform;
+       
 
         public Bitmap characterRight;
         public Bitmap characterLeft;
@@ -52,6 +54,8 @@ namespace Prototype_Virus_Game
         public Rectangle platform10Rec = new Rectangle(250, 200, 326, platformHöhe);
 
         public List<Rectangle> GamePlatformsBounds;
+
+        Stopwatch stopWatch = new Stopwatch();
 
 
         public Game()
@@ -81,6 +85,9 @@ namespace Prototype_Virus_Game
             platform = new Bitmap(Properties.Resources.lvl1_plattform);
 
             DoubleBuffered = true;
+
+
+            
             #endregion
         }
 
@@ -162,7 +169,7 @@ namespace Prototype_Virus_Game
             this.pbCharacterBounds.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseClickShootBullet);
 
 
-
+           
             #endregion
         }
 
@@ -274,7 +281,14 @@ namespace Prototype_Virus_Game
             GameOver go = new GameOver();
             virusTimer.Enabled = false;
             gameTimer.Enabled = false;
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
 
+            // Format and display the TimeSpan value.
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+            
             go.Show();
         }
 
@@ -327,6 +341,8 @@ namespace Prototype_Virus_Game
             start.Interval = 20;
             start.Tick += new EventHandler(MoveFirstSteps);
             GameState.HighScore = 0;
+            
+            stopWatch.Start();
 
             virusTimer.Enabled = true;
             gameTimer.Enabled = true;

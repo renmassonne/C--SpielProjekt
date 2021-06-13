@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBackToMenu = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
+            this.lblZeit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -68,13 +69,14 @@
             this.btnRestart.Text = "Level neu starten";
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
+             // 
             // GameOver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(723, 432);
+            this.Controls.Add(this.lblZeit);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnBackToMenu);
             this.Controls.Add(this.label1);
@@ -91,5 +93,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBackToMenu;
         private System.Windows.Forms.Button btnRestart;
+        private System.Windows.Forms.Label lblZeit;
     }
 }

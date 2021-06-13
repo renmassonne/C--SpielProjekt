@@ -211,6 +211,8 @@ namespace Prototype_Virus_Game
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            var highScoreLogic = new HighScoreLogic();
+            highScoreLogic.Load();
         }
 
         private void InitializeGameBoard()
