@@ -63,6 +63,16 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AggresiverVirus {
+            get {
+                object obj = ResourceManager.GetObject("AggresiverVirus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BlueDot {
             get {
                 object obj = ResourceManager.GetObject("BlueDot", resourceCulture);
@@ -73,29 +83,19 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap boss {
-            get {
-                object obj = ResourceManager.GetObject("boss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap characterLeft {
-            get {
-                object obj = ResourceManager.GetObject("characterLeft", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap characterRight {
             get {
                 object obj = ResourceManager.GetObject("characterRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Flugzeug {
+            get {
+                object obj = ResourceManager.GetObject("Flugzeug", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hearth {
+        internal static System.Drawing.Bitmap Heart {
             get {
-                object obj = ResourceManager.GetObject("Hearth", resourceCulture);
+                object obj = ResourceManager.GetObject("Heart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hilde {
+        internal static System.Drawing.Bitmap klopapier {
             get {
-                object obj = ResourceManager.GetObject("Hilde", resourceCulture);
+                object obj = ResourceManager.GetObject("klopapier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,59 +133,9 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HildeAggro {
+        internal static System.Drawing.Bitmap klopapier1 {
             get {
-                object obj = ResourceManager.GetObject("HildeAggro", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HildeFett {
-            get {
-                object obj = ResourceManager.GetObject("HildeFett", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HildeFettOhneSchild {
-            get {
-                object obj = ResourceManager.GetObject("HildeFettOhneSchild", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HildeMutiert {
-            get {
-                object obj = ResourceManager.GetObject("HildeMutiert", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HildeTeiler {
-            get {
-                object obj = ResourceManager.GetObject("HildeTeiler", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HildeTeleporter {
-            get {
-                object obj = ResourceManager.GetObject("HildeTeleporter", resourceCulture);
+                object obj = ResourceManager.GetObject("klopapier1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +203,69 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mundschutz {
+            get {
+                object obj = ResourceManager.GetObject("Mundschutz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MutierterVirus {
+            get {
+                object obj = ResourceManager.GetObject("MutierterVirus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap platform {
             get {
                 object obj = ResourceManager.GetObject("platform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pokal {
+            get {
+                object obj = ResourceManager.GetObject("pokal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spritze {
+            get {
+                object obj = ResourceManager.GetObject("Spritze", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Virus_Boss {
+            get {
+                object obj = ResourceManager.GetObject("Virus_Boss", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Virus_Teiler {
+            get {
+                object obj = ResourceManager.GetObject("Virus_Teiler", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
