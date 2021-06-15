@@ -15,6 +15,7 @@ namespace Prototype_Virus_Game
             if (e.KeyCode == Keys.A)
             {
                 GameState.RunLeft = true;
+                GameState.RunRight = false;
 
                 if (GameState.PlayerLookingRight == true)
                 {
@@ -26,6 +27,7 @@ namespace Prototype_Virus_Game
             if (e.KeyCode == Keys.D)
             {
                 GameState.RunRight = true;
+                GameState.RunLeft = false;
 
                 if (GameState.PlayerLookingLeft == true)
                 {
@@ -54,12 +56,7 @@ namespace Prototype_Virus_Game
                 Game.instance.gameTimer.Stop();
                 gm.Show();
                 
-            }
-
-            if (e.KeyCode == Keys.P)
-            {
-                Game.instance.DrawNewBackGroundImage();
-            }
+            }            
         }
     }
 }
