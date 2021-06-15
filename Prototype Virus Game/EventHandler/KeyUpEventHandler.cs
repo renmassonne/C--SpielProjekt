@@ -11,10 +11,11 @@ namespace Prototype_Virus_Game
     {
         public void Game_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space)
-            {
-                GameState.Jump = false;
-            }
+            //if (e.KeyCode == Keys.Space)
+            //{
+            //    GameState.Jump = false;
+            //}
+
             if (e.KeyCode == Keys.D)
             {
 
