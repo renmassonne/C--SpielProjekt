@@ -1,9 +1,8 @@
-﻿using Prototype_Virus_Game.GameLogic;
+﻿using Prototype_Virus_Game.Components;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
@@ -27,7 +26,6 @@ namespace Prototype_Virus_Game
         private Bitmap hinterbmp1;
         private Bitmap anzeige;
         private Bitmap platform;
-       
 
         public Bitmap characterRight;
         public Bitmap characterLeft;
@@ -55,8 +53,10 @@ namespace Prototype_Virus_Game
 
         public List<Rectangle> GamePlatformsBounds;
 
-        Stopwatch stopWatch = new Stopwatch();
-
+        DateTime GameTimer { get; set; }
+        public DateTime PointObjectTimer { get; set; }
+        public DateTime MutatedVirusSpawnTimer { get; set; }
+        public ProgressBar BossHealthBar { get; set; }
 
         public Game()
         {
@@ -85,9 +85,6 @@ namespace Prototype_Virus_Game
             platform = new Bitmap(Properties.Resources.lvl1_plattform);
 
             DoubleBuffered = true;
-
-
-            
             #endregion
         }
 
@@ -108,13 +105,23 @@ namespace Prototype_Virus_Game
             pbCharacterBounds.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCharacterBounds.BackColor = Color.Transparent;
             pbCharacterBounds.Parent = pbBackGround;
-
+                        
+           
+            pbBossHealthBar.Location = new Point(400, 1000);
+            pbBossHealthBar.Size = new Size(800, 25);
+            pbBossHealthBar.BackColor = Color.Red;            
+            pbBossHealthBar.Value = 100;
+            
+            
+         
 
             lblScore.Parent = pbBackGround;
             lblScore.BringToFront();
             lblScore.Location = new Point(gameSize.Width / 2 - lblScore.Width, 20);
 
+            lblLevelDisplay.Text = "Level 1";
             lblLevelDisplay.BringToFront();
+            
 
             //To Display Health
             pbHealth.Parent = pbBackGround;
@@ -128,6 +135,8 @@ namespace Prototype_Virus_Game
             pbHealth2.Parent = pbBackGround;
             pbHealth2.Location = new Point(1720, 20);
             pbHealth2.BringToFront();
+
+           
 
             GamePlatformsBounds = new List<Rectangle>();
 
@@ -162,25 +171,28 @@ namespace Prototype_Virus_Game
             UiComponents.Character = pbCharacter;
             UiComponents.BackGround = pbBackGround;
 
-            this.gameTimer.Tick += new EventHandler(new CharacterLogic().Logic);
-            this.virusTimer.Tick += new EventHandler(new VirusLogic().Logic);
+            Items.ItemList = new List<Items>();
 
+            this.gameTimer.Tick += new EventHandler(new CharacterLogic().Logic);
+            gameTimer.Tick += new EventHandler(new ItemLogic().Logic);
+            this.virusTimer.Tick += new EventHandler(new VirusLogic().Logic);
+            
 
             this.pbCharacterBounds.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseClickShootBullet);
 
 
-           
+
             #endregion
         }
 
         #region Methoden
 
         //Methode um Schuss abzufeuern
-        private void MouseClickShootBullet(object sender, MouseEventArgs e)
+        public void MouseClickShootBullet(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                Bullet bullet = new Bullet();
+                BulletLogic bullet = new BulletLogic();
                 bullet.CreateProjectile();
             }
         }
@@ -190,6 +202,17 @@ namespace Prototype_Virus_Game
         {
             if (level == 1)
             {
+                
+
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("sv");
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("sv");
+                Virus.VirusSpawnOrder.Add("av");
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("dv");
+
 
                 Graphics gb = Graphics.FromImage(hinterbmp1);
 
@@ -211,6 +234,20 @@ namespace Prototype_Virus_Game
 
             if (level == 2)
             {
+                gameTimer.Enabled = false;
+                virusTimer.Enabled = false;
+
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("sv");
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("sv");
+                Virus.VirusSpawnOrder.Add("av");
+                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("tv");
+                Virus.VirusSpawnOrder.Add("dv");
+
+
                 hinterbmp = new Bitmap(Properties.Resources.lvl2);
 
                 hinterbmp1 = new Bitmap(hinterbmp, gameSize);
@@ -242,6 +279,9 @@ namespace Prototype_Virus_Game
             }
             if (level == 3)
             {
+                gameTimer.Enabled = false;
+                virusTimer.Enabled = false;
+
                 hinterbmp = new Bitmap(Properties.Resources.lvl3);
 
                 hinterbmp1 = new Bitmap(hinterbmp, gameSize);
@@ -268,7 +308,8 @@ namespace Prototype_Virus_Game
                 pbBackGround.Image = hinterbmp1;
 
                 GameState.GroundLevel = 750;
-                lblLevelDisplay.Text = "Level 3";
+                lblLevelDisplay.Text ="Level 3";
+                
             }
             StartLevel();
             
@@ -281,38 +322,27 @@ namespace Prototype_Virus_Game
             GameOver go = new GameOver();
             virusTimer.Enabled = false;
             gameTimer.Enabled = false;
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
 
-            // Format and display the TimeSpan value.
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds,
-                ts.Milliseconds / 10);
-            
             go.Show();
         }
 
 //Methode zur Abziehung eines Lebens bei Kollision mit Virus
-        public void PlayerGotHit()
-        {
-            if (GameState.PlayerGotHit)
-            {
-                GameState.playerHealth--;
-            }
+        public void DisplayHealth()
+        {           
 
-            if (GameState.playerHealth == 3)
+            if (GameState.PlayerHealth == 3)
             {
                 pbHealth.Visible = true;
                 pbHealth1.Visible = true;
                 pbHealth2.Visible = true;
             }
-            else if (GameState.playerHealth == 2)
+            else if (GameState.PlayerHealth == 2)
             {
                 pbHealth.Visible = false;
                 pbHealth1.Visible = true;
                 pbHealth2.Visible = true;
             }
-            else if (GameState.playerHealth == 1)
+            else if (GameState.PlayerHealth == 1)
             {
                 pbHealth.Visible = false;
                 pbHealth1.Visible = false;
@@ -325,10 +355,7 @@ namespace Prototype_Virus_Game
                 pbHealth2.Visible = false;
 
                GameOver();
-            }
-
-            UiComponents.Viruses.RemoveAll(item => item.Dead == true);
-            GameState.PlayerGotHit = false;
+            }          
         }
 
 //Methode um "hineingehen" in Level zu simulieren und Level zu starten
@@ -336,16 +363,18 @@ namespace Prototype_Virus_Game
         {
             pbCharacterBounds.Location = new Point(-100, GameState.GroundLevel);
 
+            pbCharacterBounds.Image = Properties.Resources.characterRight;
+            pbCharacterBounds.Visible = true;
+           
             System.Windows.Forms.Timer start = new System.Windows.Forms.Timer();
             start.Enabled = true;
             start.Interval = 20;
             start.Tick += new EventHandler(MoveFirstSteps);
-            GameState.HighScore = 0;
-            
-            stopWatch.Start();
+            GameState.Score = 0;
 
-            virusTimer.Enabled = true;
-            gameTimer.Enabled = true;
+           
+
+            
 
             void MoveFirstSteps(object sender, EventArgs e)
             {
@@ -356,98 +385,39 @@ namespace Prototype_Virus_Game
                 else
                 {
                     start.Enabled = false;
+                 
+                    pbHealth.Visible = true;
+                    pbHealth1.Visible = true;
+                    pbHealth2.Visible = true;
+                    lblLevelDisplay.Visible = true;
+                    
 
-                    for (int i = 0; i < 8; i++)
+
+                    virusTimer.Enabled = true;
+                    gameTimer.Enabled = true;
+
+                    if (lblLevelDisplay.Text.Equals("Level 3"))
                     {
-                        var virusNormal = new NormalVirus();
-
-                        UiComponents.AddVirus(virusNormal);
-                        ((ISupportInitialize)(virusNormal)).BeginInit();
-                        virusNormal.MouseClick += new MouseEventHandler(this.MouseClickShootBullet);
-                        this.Controls.Add(virusNormal);
-                        ((ISupportInitialize)(virusNormal)).EndInit();
-                    }
-                    for (int i = 0; i < 4; i++)
-                    {
-                        var virusDick = new ShieldedVirus();
-
-                        UiComponents.AddVirus(virusDick);
-                        ((ISupportInitialize)(virusDick)).BeginInit();
-                        virusDick.MouseClick += new MouseEventHandler(this.MouseClickShootBullet);
-                        this.Controls.Add(virusDick);
-                        ((ISupportInitialize)(virusDick)).EndInit();
+                      Virus.StartBossLevel();
                     }
 
-                    foreach (var virus in UiComponents.Viruses)
-                    {
-                        virus.BackColor = Color.Transparent;
-                        virus.Parent = pbBackGround;
-                        DoubleBuffered = true;
-                    }
+                    
+
+                   
+
+                    GameTimer = DateTime.Now;
+                    PointObjectTimer = GameTimer.AddSeconds(10);
+                    MutatedVirusSpawnTimer = GameTimer.AddSeconds(25);
+
+
 
                     this.KeyDown += new KeyEventHandler(new KeyDownEventHandler().Game_KeyDown);
                     this.KeyUp += new KeyEventHandler(new KeyUpEventHandler().Game_KeyUp);
+
+                    
                 }
             }
         }
-
-
-
-
-
-
-//nicht mehr benötigte Methode um neues Bild mit eingefügten Plattformen neu zu speichern 
-
-        public void DrawNewBackGroundImage()
-        {
-            hinterbmp = new Bitmap("lvl1.bmp");
-            hinterbmp1 = new Bitmap(hinterbmp, gameSize);
-
-
-            anzeige = new Bitmap(gameSize.Width, gameSize.Height);
-
-            platform = new Bitmap("platform.png");
-
-            pbBackGround.ClientSize = hinterbmp1.Size;
-
-            Graphics gb = Graphics.FromImage(anzeige);
-
-            gb.DrawImage(hinterbmp1, backgroundRec);
-
-            foreach (var platformBounds in GamePlatformsBounds)
-            {
-                gb.DrawImage(platform, platformBounds);
-            }
-
-            gb.Dispose();
-
-            int i;
-            string path = @"../NeueBilder";
-            if (!(Directory.Exists(path)))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            int alreadyInFolder;
-
-            alreadyInFolder = Directory.GetFiles(path, "*.png").Length;
-
-            if (alreadyInFolder > 0)
-            {
-                i = alreadyInFolder + 1;
-            }
-            else
-            {
-                i = 1;
-            }
-
-            string name = $"NeuerBackground{i}.png";
-            anzeige.Save($@"{path}\{name}", ImageFormat.Png);
-            MessageBox.Show("Bild gespeichert!");
-        }
-
-
-
         #endregion
 
 
