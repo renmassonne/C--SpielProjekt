@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace Prototype_Virus_Game
 {
@@ -17,15 +16,8 @@ namespace Prototype_Virus_Game
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
-            foreach(var highScoreEntry in GameState.HighScoreList)
-            {
-                lbScore.Items.Add(highScoreEntry.GetLeaderBoardEntry());
-            }
-        }
-        
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
+
+
         }
     }
 }
