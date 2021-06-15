@@ -80,7 +80,6 @@ namespace Prototype_Virus_Game
             this.btnLeaderBoard.Text = "Leaderboard";
             this.btnLeaderBoard.UseCompatibleTextRendering = true;
             this.btnLeaderBoard.UseVisualStyleBackColor = false;
-            this.btnLeaderBoard.Click += new System.EventHandler(this.btnLeaderBoard_Click);
             // 
             // btnBeenden
             // 
