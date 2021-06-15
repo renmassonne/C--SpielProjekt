@@ -10,8 +10,9 @@ namespace Prototype_Virus_Game
     public static class UiComponents
     {
         public static List<PictureBox> Components { get; internal set; }
+      
 
-        public static List<Virus> Viruses{ get; internal set; }
+        public static List<Virus> Viruses  {get; set;}
 
         private static PictureBox character;
         public static PictureBox Character {
