@@ -55,6 +55,9 @@
     <Compile Include="Components\Character.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\Items.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\Platform.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -71,9 +74,9 @@
     <Compile Include="Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameLogic\HighScoreLogic.cs" />
+    <Compile Include="GameLogic\ItemLogic.cs" />
     <Compile Include="GameLogic\VirusLogic.cs" />
-    <Compile Include="GameLogic\Bullet.cs" />
+    <Compile Include="GameLogic\BulletLogic.cs" />
     <Compile Include="GameOver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,7 +103,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="State\GameState.cs" />
-    <Compile Include="State\HighScoreEntry.cs" />
     <EmbeddedResource Include="Anleitung.resx">
       <DependentUpon>Anleitung.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,9 +114,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Game_Menu.resx">
       <DependentUpon>Game_Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LeaderBoard.resx">
-      <DependentUpon>LeaderBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,9 +137,6 @@
     <None Include="Resources\Level-1.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\platform1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Hilde.png" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +149,16 @@
     <None Include="Resources\characterRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\klopapier1.png" />
+    <None Include="Resources\klopapier.png" />
+    <None Include="Resources\platform1.png" />
+    <None Include="Resources\Mundschutz.png" />
+    <None Include="Resources\Spritze.png" />
+    <None Include="Resources\Virus-Teiler.png" />
+    <None Include="Resources\Virus-Boss.png" />
+    <None Include="Resources\MutierterVirus.png" />
+    <None Include="Resources\pokal.png" />
+    <None Include="Resources\hähnchen.jpg" />
     <None Include="Resources\lvl1_plattform.png" />
     <None Include="Resources\lvl2_plattform.png" />
     <None Include="Resources\lvl3_plattform.png" />
@@ -171,6 +177,8 @@
     <None Include="Resources\HildeMutiert.png" />
     <None Include="Resources\HildeAggro.png" />
     <None Include="Resources\boss.png" />
+    <None Include="Resources\Flugzeug.png" />
+    <None Include="Resources\AggresiverVirus.png" />
     <Content Include="Resources\Hearth.png" />
     <None Include="Resources\Hearth1.png" />
   </ItemGroup>
