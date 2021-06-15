@@ -19,7 +19,8 @@ namespace Prototype_Virus_Game.Components
             TabStop = false;
             Size = new Size(bounds.Width, bounds.Height);         
             Location = new Point(bounds.X, bounds.Y);
-            Visible = false;        
+            Visible = false;            
+            
         }
 
         
