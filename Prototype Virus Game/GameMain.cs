@@ -17,7 +17,6 @@ namespace Prototype_Virus_Game
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);              
             Application.Run(new Game());
-
         }
     }
 }
