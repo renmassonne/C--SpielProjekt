@@ -45,11 +45,5 @@ namespace Prototype_Virus_Game
             Anleitung gm = new Anleitung();
             gm.Show();
         }
-
-        private void btnLeaderBoard_Click(object sender, EventArgs e)
-        {
-            LeaderBoard lb = new LeaderBoard();
-            lb.Show();
-        }
     }
 }
