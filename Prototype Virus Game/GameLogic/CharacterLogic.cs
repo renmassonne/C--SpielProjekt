@@ -12,52 +12,41 @@ namespace Prototype_Virus_Game
 {
     public class CharacterLogic
     {
-        public int x;
-        public int y;
-        int pause = 0;
+        public static int chaLocX;
+        public static int chaLocY;
+        public static int pause = 0;
+        static int once = 0;
+        static DateTime WaitOneSec;
 
         public void Logic(object sender, EventArgs e)
         {
-            x = Game.instance.pbCharacterBounds.Location.X;
-            y = Game.instance.pbCharacterBounds.Location.Y;
+            chaLocX = Game.instance.pbCharacterBounds.Location.X;
+            chaLocY = Game.instance.pbCharacterBounds.Location.Y;
 
             if (GameState.Jump)
             {
-                //if (pause < 4)
-                
-                    if (!(Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel) || GameState.OnPlatform)
-                    {
-
-                        Game.instance.pbCharacterBounds.Top -= 200;
-
-                        GameState.Jump = false;
-
-                        //pause++;
-
-                    }
-
-               
+                if (pause < 4)
+                {                 
+                    Game.instance.pbCharacterBounds.Top -= 60;                  
+                    pause++;
+                }
             }
 
-            if (GameState.OnPlatform == false || (GameState.OnPlatform == true && GameState.JumpDown == true))
+
+            if ((pause == 4 && GameState.OnPlatform == false) || (pause == 0 && GameState.JumpDown == true))
             {
-                //if (pause == 3)
-               
-                    if (Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel)
+                if (Game.instance.pbCharacterBounds.Location.Y < GameState.GroundLevel)
+                {
+
+                    Game.instance.pbCharacterBounds.Top += 10;
+                    GameState.Jump = false;
+
+                    if (GameState.OnPlatform || Game.instance.pbCharacterBounds.Location.Y == GameState.GroundLevel)
                     {
-
-                        Game.instance.pbCharacterBounds.Top += 10;
-
-                        //if (GameState.OnPlatform || Game.instance.pbCharacterBounds.Location.Y == GameState.GroundLevel)
-                        //{
-                        //    pause = 0;
-                        //}
-                       
+                        pause = 0;
                     }
-               
+                }
             }
-
-
 
 
 
@@ -96,72 +85,117 @@ namespace Prototype_Virus_Game
                 GameState.TurnPlayer = false;
             }
 
-            foreach (var virus in UiComponents.Viruses)
-            {
-
-                if (virus.Bounds.IntersectsWith(Game.instance.pbCharacterBounds.Bounds))
-                {
-                    GameState.PlayerGotHit = true;
-                    virus.Dead = true;
-                    Game.instance.Controls.Remove(virus);
-                    virus.Dispose();
-                }
-            }
-            Game.instance.PlayerGotHit();
-
+            // 
 
             foreach (var platform in Game.instance.GamePlatformsBounds)
             {
                 if (Game.instance.pbCharacterBounds.Bounds.IntersectsWith(platform))
                 {
-                    int playerFeet = y + Game.instance.chaHeight;
+                    int playerFeet = chaLocY + Game.instance.chaHeight;
 
-                    if (playerFeet > platform.Top -5 && playerFeet < platform.Top +5)
+                    if (playerFeet > platform.Top - 5 && playerFeet < platform.Top + 5)
                     {
                         if (GameState.JumpDown == false)
                         {
 
-                            Game.instance.pbCharacterBounds.Location = new Point(x, platform.Top - Game.instance.chaHeight);
-                            y = platform.Top - Game.instance.chaHeight;
+                            Game.instance.pbCharacterBounds.Location = new Point(chaLocX, platform.Top - Game.instance.chaHeight);
+                            chaLocY = platform.Top - Game.instance.chaHeight;
 
                             GameState.OnPlatform = true;
+                            pause = 0;
                         }
                     }
                 }
             }
+
+
+            // regelt ob character nach unten fällt wenn er plattformen verlässt
             int all = 0;
 
             foreach (var platform in Game.instance.GamePlatformsBounds)
             {
 
-                if (x + Game.instance.chaWidth <= platform.Left || x >= platform.Right || y + Game.instance.chaHeight < platform.Top || y + Game.instance.chaHeight > platform.Top)
+                if (chaLocX + Game.instance.chaWidth <= platform.Left || chaLocX >= platform.Right || chaLocY + Game.instance.chaHeight < platform.Top || chaLocY + Game.instance.chaHeight > platform.Top)
                 {
                     all += 1;
                 }
             }
             if (all == Game.instance.GamePlatformsBounds.Count)
-                GameState.OnPlatform = false;
-
-
-            //EndGame condition
-            if (GameState.HighScore >= 40)
             {
-                if (x > 1700 && y > GameState.GroundLevel - 50 && Game.instance.lblLevelDisplay.Text.Equals("Level 1 "))
-                {
-                    Game.instance.DrawGameAssets(2);                   
-                }
-                else if (x > 1700 && y > GameState.GroundLevel - 50 && Game.instance.lblLevelDisplay.Text.Equals("Level 2"))
-                {
-                    Game.instance.DrawGameAssets(3);
-                }
-                
+                GameState.OnPlatform = false;
+                if (GameState.Jump == false)
+                    pause = 4;
+            }
+
+            if (chaLocY > GameState.GroundLevel - 5 && chaLocY < GameState.GroundLevel + 5)
+            {
+                pause = 0;
+            }
+
+            
+           
+            //EndGame condition
+            if (GameState.Score >= 0)
+            {
+                TransitionToNextLevel();
             }
         }
-
-
         
 
 
+
+
+
+
+        void TransitionToNextLevel()
+        {
+            if (chaLocX > 1750 && chaLocY > GameState.GroundLevel - 10)
+            {
+                if (once == 0)
+                {
+                    Game.instance.lblLevelDisplay.Visible = false;
+                    Game.instance.pbHealth.Visible = false;
+                    Game.instance.pbHealth1.Visible = false;
+                    Game.instance.pbHealth2.Visible = false;
+                    Game.instance.pbCharacterBounds.Visible = false;
+                         
+                    Virus.VirusSpawnOrder.Clear();
+                    Virus.SpawnOrderIteration = 0;
+
+                    Game.instance.virusTimer.Enabled = false;
+
+                    Game.instance.pbBackGround.BackColor = Color.Black;
+                    Game.instance.pbBackGround.Image = null;
+
+                    for (int i = UiComponents.Viruses.Count - 1; i >= 0; i--)
+                    {
+                        var virus = UiComponents.Viruses[i];
+
+                        virus.Dispose();
+                        Game.instance.Controls.Remove(virus);
+
+                    }
+                    UiComponents.Viruses.Clear();
+
+                    WaitOneSec = DateTime.Now.AddSeconds(1);
+                    once++;
+                }
+
+                if (DateTime.Now >= WaitOneSec)
+                {
+                    if (Game.instance.lblLevelDisplay.Text.Equals("Level 1"))
+                    {
+                        Game.instance.DrawGameAssets(2);
+                        once = 0;
+                    }
+                    else if (Game.instance.lblLevelDisplay.Text.Equals("Level 2"))
+                    {
+                        Game.instance.DrawGameAssets(3);
+                        once = 0;
+                    }
+                }
+            }
+        }
     }
 }
 
