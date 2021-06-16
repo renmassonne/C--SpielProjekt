@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
@@ -54,6 +55,7 @@ namespace Prototype_Virus_Game
         public List<Rectangle> GamePlatformsBounds;
 
         DateTime GameTimer { get; set; }
+        public Stopwatch PlayTime { get; set; }
         public DateTime PointObjectTimer { get; set; }
         public DateTime MutatedVirusSpawnTimer { get; set; }
         public ProgressBar BossHealthBar { get; set; }
@@ -180,7 +182,9 @@ namespace Prototype_Virus_Game
 
             this.pbCharacterBounds.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseClickShootBullet);
 
-
+            PlayTime = new Stopwatch();
+           
+           HighScoreLogic.Load();
 
             #endregion
         }
@@ -230,6 +234,8 @@ namespace Prototype_Virus_Game
                 gb.Dispose();
 
                 pbBackGround.Image = hinterbmp1;
+
+                
             }
 
             if (level == 2)
@@ -237,7 +243,7 @@ namespace Prototype_Virus_Game
                 gameTimer.Enabled = false;
                 virusTimer.Enabled = false;
 
-                Virus.VirusSpawnOrder.Add("nv");
+                Virus.VirusSpawnOrder.Add("av");
                 Virus.VirusSpawnOrder.Add("nv");
                 Virus.VirusSpawnOrder.Add("sv");
                 Virus.VirusSpawnOrder.Add("nv");
@@ -372,7 +378,7 @@ namespace Prototype_Virus_Game
             start.Tick += new EventHandler(MoveFirstSteps);
             GameState.Score = 0;
 
-           
+          
 
             
 
@@ -396,11 +402,15 @@ namespace Prototype_Virus_Game
                     virusTimer.Enabled = true;
                     gameTimer.Enabled = true;
 
+                    if (lblLevelDisplay.Text.Equals("Level 1"))
+                    {
+                        PlayTime.Start();
+                    }
                     if (lblLevelDisplay.Text.Equals("Level 3"))
                     {
                       Virus.StartBossLevel();
                     }
-
+                    
                     
 
                    
