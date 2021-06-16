@@ -44,10 +44,10 @@
             this.label1.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(38, 148);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(764, 215);
+            this.label1.Size = new System.Drawing.Size(826, 215);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Dr. Astra Willi den Virus und seine Arme von Viren besiegen \r\nund hat die Welt ge" +
-    "rettet. \r\n\r\nGib deinen Namen ein, um deinen Score zu speichern:\r\n\r\n";
+            this.label1.Text = "Dr. Astra hat Willi den Virus und seine Armee von Viren besiegen \r\nund hat die We" +
+    "lt gerettet. \r\n\r\nGib deinen Namen ein, um deinen Score zu speichern:\r\n\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNeustart
