@@ -30,7 +30,9 @@ namespace Prototype_Virus_Game
         public static int Score { get; set; }
         public static int VirusKillCount { get; set; }
         public static int HeartDroppingCounter { get; set; } = 10;     
-        public static bool BossFight { get; set; } 
+        public static bool BossFight { get; set; }  
+        public static TimeSpan TotalPlayTime { get; set; }
+        public static List<HighScoreEntry> HighScoreList { get; set; }
 
         static GameState()
         {
