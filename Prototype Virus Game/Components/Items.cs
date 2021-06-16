@@ -26,7 +26,18 @@ namespace Prototype_Virus_Game.Components
             Size = new System.Drawing.Size(80, 20);
             TabIndex = 14;
             TabStop = false;
-            Image = Properties.Resources.Mundschutz;
+            if(Game.instance.lblLevelDisplay.Text.Equals("Level 1"))
+            {
+              Image = Properties.Resources.Mundschutz;
+            }
+            else if (Game.instance.lblLevelDisplay.Text.Equals("Level 2"))
+            {
+                Image = Properties.Resources.Spritze;
+            }
+            else 
+            {
+                Image = Properties.Resources.Flugzeug;
+            }
             SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         }
         public static void DropLPItem(Virus virus)
