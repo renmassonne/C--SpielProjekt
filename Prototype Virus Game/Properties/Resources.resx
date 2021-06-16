@@ -127,9 +127,6 @@
   <data name="ghostclanital" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ghostclanital.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="platform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\platform1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hearth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,17 +160,11 @@
   <data name="lvl3_plattform" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lvl3_plattform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pokal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pokal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="AggresiverVirus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AggresiverVirus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Flugzeug" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flugzeug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="klopapier" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\klopapier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="klopapier1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\klopapier1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
