@@ -7,11 +7,11 @@ namespace Prototype_Virus_Game
     {
         public string Username{ get; set; }
 
-        public int Score { get; set; }
+        public TimeSpan PlayerTime { get; set; }
 
         public string GetLeaderBoardEntry()
         {
-            return Score + "\t" + Username;
+            return PlayerTime + "\t" + Username;
         }
         
     }
