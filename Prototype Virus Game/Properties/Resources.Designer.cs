@@ -123,16 +123,6 @@ namespace Prototype_Virus_Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap klopapier {
-            get {
-                object obj = ResourceManager.GetObject("klopapier", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap klopapier1 {
             get {
                 object obj = ResourceManager.GetObject("klopapier1", resourceCulture);
@@ -216,26 +206,6 @@ namespace Prototype_Virus_Game.Properties {
         internal static System.Drawing.Bitmap MutierterVirus {
             get {
                 object obj = ResourceManager.GetObject("MutierterVirus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap platform {
-            get {
-                object obj = ResourceManager.GetObject("platform", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pokal {
-            get {
-                object obj = ResourceManager.GetObject("pokal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
