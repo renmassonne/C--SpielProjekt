@@ -44,8 +44,13 @@ namespace Prototype_Virus_Game
                     }
                     if (item is Components.LevelProgressItems)
                     {
-                        /* noch entwerfen dass aufheben eine anzeige 1/3 o.ä macht und level erst zuende wenn alle drei eingesammelt, könnte zb nur von teleportern
-                         * oder mutierten dropbar sein also drei teleporter in lvl 1 und 2*/
+                        if (Game.instance.lblLevelDisplay.Text.Equals("Level 3"))
+                        {
+                            Game.instance.PlayTime.Stop();
+                            GameState.TotalPlayTime = Game.instance.PlayTime.Elapsed;                          
+                            WinningScreen ws = new WinningScreen();
+                            ws.Show();
+                        }
                         Components.Items.ItemList.Remove(item);
                         item.Dispose();
                         item = null;
