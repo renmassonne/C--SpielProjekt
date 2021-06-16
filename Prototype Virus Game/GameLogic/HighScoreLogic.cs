@@ -11,11 +11,11 @@ namespace Prototype_Virus_Game
 {
     public class HighScoreLogic
     {
-        public void Save()
+        public static void Save(string userName)
         {
             var entry = new HighScoreEntry();
-            entry.Score = 1234;
-            entry.Username = Environment.UserName;
+            entry.PlayerTime = GameState.TotalPlayTime;
+            entry.Username = userName;
             GameState.HighScoreList.Add(entry);
 
             using (Stream stream = File.Open("data.bin", FileMode.Create))
@@ -25,7 +25,7 @@ namespace Prototype_Virus_Game
             }
         }
 
-        public void Load ()
+        public static void Load ()
         {
             if(File.Exists("data.bin"))
             {
