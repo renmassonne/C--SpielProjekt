@@ -118,11 +118,11 @@ namespace Prototype_Virus_Game
                             virus.Dispose();
                             virus.Dead = true;
 
-                            if (virus is MutatedVirus)
+                            if (virus is MutatedVirus || virus is BossVirus)
                             {                               
                                LevelProgressItems.DropLPItem(virus);   
                                
-                            }                           
+                            }                                                          
                             GameState.Score = GameState.Score + virus.Points;
                             GameState.VirusKillCount++;
 
