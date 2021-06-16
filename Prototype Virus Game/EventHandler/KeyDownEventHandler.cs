@@ -52,6 +52,7 @@ namespace Prototype_Virus_Game
             if (e.KeyCode == Keys.Escape)
             {
                 Game_Menu gm = new Game_Menu();
+                Game.instance.PlayTime.Stop();
                 Game.instance.virusTimer.Stop();
                 Game.instance.gameTimer.Stop();
                 gm.Show();
