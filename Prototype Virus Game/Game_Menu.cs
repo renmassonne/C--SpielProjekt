@@ -22,6 +22,7 @@ namespace Prototype_Virus_Game
             Close();
             Game.instance.virusTimer.Start();
             Game.instance.gameTimer.Start();
+            Game.instance.PlayTime.Start();
         }
 
         private void btnVollbildToggle_Click(object sender, EventArgs e)
@@ -44,6 +45,13 @@ namespace Prototype_Virus_Game
         {
             Anleitung gm = new Anleitung();
             gm.Show();
+        }
+
+        private void btnLeaderBoard_Click(object sender, EventArgs e)
+        {
+            Leaderboard lb = new Leaderboard();
+            lb.Show();
+
         }
     }
 }
