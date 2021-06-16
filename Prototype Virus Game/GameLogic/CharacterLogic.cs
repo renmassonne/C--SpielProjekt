@@ -145,11 +145,9 @@ namespace Prototype_Virus_Game
 
 
 
-
-
         void TransitionToNextLevel()
         {
-            if (chaLocX > 1750 && chaLocY > GameState.GroundLevel - 10)
+            if (chaLocX > 1750 && chaLocY > GameState.GroundLevel - 10 && !Game.instance.lblLevelDisplay.Text.Equals("Level 3"))
             {
                 if (once == 0)
                 {
