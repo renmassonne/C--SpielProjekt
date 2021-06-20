@@ -57,8 +57,7 @@ namespace Prototype_Virus_Game
                     {                   
                         BossVirus.BossAttackMove(virus);
                     }
-                }
-              
+                }             
             }
 
 

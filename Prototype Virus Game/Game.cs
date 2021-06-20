@@ -206,7 +206,8 @@ namespace Prototype_Virus_Game
         {
             if (level == 1)
             {
-                
+
+                platform2Rec.Width = 500;
 
                 Virus.VirusSpawnOrder.Add("nv");
                 Virus.VirusSpawnOrder.Add("nv");
@@ -242,6 +243,8 @@ namespace Prototype_Virus_Game
             {
                 gameTimer.Enabled = false;
                 virusTimer.Enabled = false;
+
+                platform2Rec.Width = 2000;
 
                 Virus.VirusSpawnOrder.Add("av");
                 Virus.VirusSpawnOrder.Add("nv");
@@ -391,10 +394,28 @@ namespace Prototype_Virus_Game
                 else
                 {
                     start.Enabled = false;
-                 
-                    pbHealth.Visible = true;
-                    pbHealth1.Visible = true;
-                    pbHealth2.Visible = true;
+
+                    if (GameState.PlayerHealth == 3)
+                    {
+                        pbHealth.Visible = true;
+                        pbHealth1.Visible = true;
+                        pbHealth2.Visible = true;
+                    }
+                    else if (GameState.PlayerHealth == 2)
+                    {
+                        pbHealth.Visible = false;
+                        pbHealth1.Visible = true;
+                        pbHealth2.Visible = true;
+                    }
+                    else if (GameState.PlayerHealth == 1)
+                    {
+                        pbHealth.Visible = false;
+                        pbHealth1.Visible = false;
+                        pbHealth2.Visible = true;
+                    }
+                    //pbHealth.Visible = true;
+                    //pbHealth1.Visible = true;
+                    //fpbHealth2.Visible = true;
                     lblLevelDisplay.Visible = true;
                     
 

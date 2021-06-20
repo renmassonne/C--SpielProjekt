@@ -101,6 +101,7 @@ namespace Prototype_Virus_Game.Components
         public Point PlaceItem()
         {
             Random r = new Random();
+
             int whichPlatform = r.Next(0, Game.instance.GamePlatformsBounds.Count);
 
             int whereOnPlatform = r.Next(Game.instance.GamePlatformsBounds[whichPlatform].X + 10, Game.instance.GamePlatformsBounds[whichPlatform].X + Game.instance.GamePlatformsBounds[whichPlatform].Width - 70);

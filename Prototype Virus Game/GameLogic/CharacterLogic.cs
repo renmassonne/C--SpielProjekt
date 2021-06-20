@@ -156,6 +156,10 @@ namespace Prototype_Virus_Game
                     Game.instance.pbHealth1.Visible = false;
                     Game.instance.pbHealth2.Visible = false;
                     Game.instance.pbCharacterBounds.Visible = false;
+                    foreach (var item in Components.Items.ItemList)
+                    {
+                        item.Dispose();
+                    }
                          
                     Virus.VirusSpawnOrder.Clear();
                     Virus.SpawnOrderIteration = 0;
